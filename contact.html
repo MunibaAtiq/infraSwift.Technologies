@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Stories | InfraSwift Technologies</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+              :root {
+            --is-blue: #1857d6;
+            --is-blue-dark: #0f3aa0;
+            --is-navy: #0a1228;
+            --is-muted: #64748b;
+            --is-bg-light: #f8fafc;
+            --is-green: #2bb673;
+            --is-ink: #0f1b35;
+            --is-line: #e7eaf0;
+            --is-bg-soft: #f5f7fb;
+            --primary: #2599B6;
+            --primary-dark: #4B71B2;
+            --accent: #84B971;
+            --success: #84B971;
+            --primary-glow: rgba(37, 153, 182, 0.35);
+            --node-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+            --soft-border: rgba(37, 153, 182, 0.15);
+            --grad: linear-gradient(135deg, #2599B6 0%, #84B971 100%);
+             --soft-bg: #fcfdfe;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            overflow-x: hidden;
+            background-color: #f8fafc;
+        }
+
+        /* --- NAVBAR --- */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0, 97, 255, 0.08);
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.05);
+        }
+
+        .nav-shell {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            flex-shrink: 0;
+        }
+
+        .brand-logo img {
+            width: 168px;
+            height: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-menu a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #1e293b;
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 10px 2px;
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .nav-menu i {
+            font-size: 0.62rem;
+            color: #64748b;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 46px;
+            padding: 0 22px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            color: #fff;
+            border: none;
+            box-shadow: 0 12px 28px rgba(37, 153, 182, 0.25);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .nav-cta:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, var(--success), var(--primary));
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(0, 97, 255, 0.16);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--text-dark);
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* MEGA MENU */
+        .mega-parent { position: relative; }
+        .mega-parent>a { position: relative; }
+        .mega-parent>a i { margin-left: 6px; font-size: 11px; transition: .3s; }
+        .mega-parent:hover>a i { transform: rotate(180deg); }
+
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 1200px;
+            max-width: 95vw;
+            background: rgba(255, 255, 255, .98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(37, 153, 182, .15);
+            border-radius: 20px;
+            padding: 35px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 25px 60px rgba(15, 23, 42, .10), 0 10px 30px rgba(37, 153, 182, .08);
+            transition: .35s ease;
+            z-index: 9999;
+        }
+
+        .mega-menu::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            border-radius: 20px 20px 0 0;
+            background: linear-gradient(90deg, #2599B6, #84B971);
+        }
+
+        .mega-parent:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .mega-col { border-right: 1px solid rgba(37, 153, 182, .15); padding-right: 25px; }
+        .mega-col:last-child { border-right: none; }
+        .mega-col h5 { color: #2599B6; font-size: 18px; font-weight: 800; line-height: 1.4; margin-bottom: 18px; }
+        .mega-col h5::after { content: ''; display: block; width: 75px; height: 3px; margin-top: 10px; background: linear-gradient(90deg, #2599B6, #84B971); border-radius: 10px; }
+        .mega-col a { display: block; color: #334155 !important; text-decoration: none; font-size: 15px; font-weight: 600; line-height: 1.6; padding: 8px 0; transition: .3s ease; }
+        .mega-col a:hover { color: #2599B6 !important; padding-left: 10px; background: linear-gradient(90deg, rgba(37, 153, 182, .05), rgba(132, 185, 113, .05)); border-radius: 8px; padding-right: 10px; }
+        .mega-col { animation: fadeMega .5s ease; }
+
+        @keyframes fadeMega {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media(max-width:991px) {
+            .mega-menu { position: static; width: 100%; max-width: 100%; transform: none; opacity: 1; visibility: visible; display: none; grid-template-columns: 1fr; margin-top: 12px; padding: 20px; }
+            .mega-parent.active .mega-menu { display: grid; }
+            .mega-col { border-right: none; border-bottom: 1px solid rgba(37, 153, 182, .15); padding-right: 0; padding-bottom: 15px; }
+            .mega-col:last-child { border-bottom: none; }
+            .mega-parent:hover .mega-menu { transform: none; }
+
+            .nav-menu { display: none; flex-direction: column; align-items: flex-start; width: 100%; gap: 4px; padding: 14px 0; }
+            .nav-menu.open { display: flex; }
+            .nav-shell { flex-wrap: wrap; }
+            .nav-toggle { display: inline-flex; }
+            .nav-cta { font-size: 0.75rem; padding: 0 16px; min-height: 40px; }
+        }
+        /* --- HERO ANIMATIONS --- */
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(90deg, #060d1a 0%, rgba(6,13,26,0.8) 50%, transparent 100%), url('assets/MAinBanner.png');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            color: #fff;
+            overflow: hidden;
+        }
+        .hero-content h1 { 
+            font-size: 3rem; font-weight: 800; 
+            animation: slideRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
+        }
+        .hero-content p { 
+            animation: slideRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
+            animation-delay: 0.2s; opacity: 0;
+        }
+
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        /* --- RESOURCES HERO BANNER --- */
+.resources-hero {
+    position: relative;
+    /* Dark Gradient overlay taake white text clear nazar aaye */
+    background-image: linear-gradient(90deg, 
+        rgba(6, 13, 26, 1) 0%, 
+        rgba(6, 13, 26, 0.8) 40%, 
+        rgba(6, 13, 26, 0.3) 75%, 
+        transparent 100%), 
+        url('assets/MainBanner.png');
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 550px;
+    line-height: 1.6;
+}
+
+.breadcrumb-nav {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.breadcrumb-nav a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.breadcrumb-nav a:hover {
+    color: #fff;
+}
+
+.breadcrumb-nav span {
+    color: var(--primary); /* Resources word in theme color */
+}
+
+@media (max-width: 767px) {
+    .resources-hero { text-align: center; min-height: 300px; padding: 60px 0; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content p { margin: 0 auto; font-size: 1rem; }
+}
+
+ /* --- ADVANCED CONTACT & MAP UI --- */
+.contact-section { padding: 50px 0; background: #fff; }
+
+/* Info Cards with Borders */
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #f1f5f9; /* Subtle Border as seen in img */
+    border-radius: 20px;
+    margin-bottom: 25px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 30px rgba(37, 153, 182, 0.1);
+}
+
+.info-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.info-item:hover .info-icon-box {
+    background: var(--grad);
+    color: #fff;
+}
+
+/* Modern Form with Icons */
+.contact-form-card {
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 30px;
+    padding: 60px;
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.06);
+}
+
+.input-group-custom { position: relative; margin-bottom: 15px; }
+.input-group-custom i {
+    position: absolute; left: 22px; top: 50%;
+    transform: translateY(-50%); color: #94a3b8;
+    font-size: 1.1rem; pointer-events: none;
+}
+
+.input-group-custom .form-control {
+    padding-left: 55px; height: 60px; border-radius: 12px;
+    border: 1.5px solid #f1f5f9; background: #f8fafc;
+}
+
+.input-group-custom textarea.form-control { padding-top: 20px; height: auto; }
+
+/* Gradient Button */
+.btn-grad-send {
+    background: var(--grad);
+    color: #fff; border: none; padding: 18px 35px;
+    border-radius: 12px; font-weight: 800; width: 100%;
+    margin-top: 15px; display: flex; align-items: center;
+    justify-content: center; gap: 12px; transition: 0.4s;
+}
+
+.btn-grad-send:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37, 153, 182, 0.3); opacity: 0.95; }
+
+/* MAP STYLING */
+.map-container-wrap {
+    margin-top: 20px;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    height: 450px;
+    width: 100%;
+}
+
+.map-container-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(0.2) contrast(1.1); /* Professional Tech Look */
+}
+
+@media (max-width: 991px) {
+    .contact-form-card { padding: 35px 20px; }
+    .map-container-wrap { height: 350px; }
+}
+        /* ===== FOOTER ===== */
+        footer.site-footer { background: var(--is-navy); color: #b9c4d8; }
+        .f-brand-logo { width: 42px; height: 42px; border-radius: 9px; overflow: hidden; }
+        .f-brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+        footer .brand-name { font-size: 1rem; }
+        footer .f-title { color: #fff; font-weight: 700; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; margin-bottom: .9rem; }
+        footer a.f-link { color: #9fb0cf; font-size: .86rem; display: block; padding: .26rem 0; transition: color .2s; text-decoration: none; }
+        footer a.f-link:hover { color: #fff; }
+        .social-ic { width: 34px; height: 34px; border-radius: 8px; background: rgba(255, 255, 255, .08); display: grid; place-items: center; color: #cdd8ea; transition: all .25s; }
+        .social-ic:hover { background: var(--is-blue); color: #fff; }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1); }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ===== BACK TO TOP ===== */
+        #backToTop {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--is-blue); color: #fff;
+            display: grid; place-items: center; font-size: 1.1rem;
+            box-shadow: 0 4px 16px rgba(24, 87, 214, .35);
+            opacity: 0; pointer-events: none;
+            transition: opacity .3s, transform .3s;
+            transform: translateY(10px);
+            border: none; cursor: pointer;
+        }
+
+        #backToTop.show { opacity: 1; pointer-events: all; transform: translateY(0); }
+        #backToTop:hover { background: var(--is-blue-dark); }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+        }
+    </style>
+</head>
+
+<body>
+
+   <!-- ======== NAVBAR ======== -->
+<nav class="site-nav" id="siteNav">
+        <div class="container nav-shell">
+            <a class="brand-logo" href="index.html">
+                <img src="assets/Infraswift-01.png" alt="InfraSwift Technologies">
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="industries.html">Industries <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="careers.html">Careers <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="success.html">Success Stories</a></li>
+                <li class="mega-parent">
+                    <a href="solutions.html">
+                        Solutions
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+
+                    <div class="mega-menu">
+                        <div class="mega-col">
+                            <h5>Cloud Solutions</h5>
+                            <a href="#">Microsoft Azure</a>
+                            <a href="#">AWS</a>
+                            <a href="#">VMware Cloud Foundation</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Infrastructure Modernization</h5>
+                            <a href="#">VMware vSphere</a>
+                            <a href="#">VMware VCF</a>
+                            <a href="#">Hyper-V</a>
+                            <a href="#">Storage & Backup</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Cybersecurity</h5>
+                            <a href="#">SOC Services</a>
+                            <a href="#">Fortinet</a>
+                            <a href="#">Microsoft Security</a>
+                            <a href="#">Endpoint Protection</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Networking</h5>
+                            <a href="#">Cisco</a>
+                            <a href="#">Aruba</a>
+                            <a href="#">SD-WAN</a>
+                            <a href="#">Wireless</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Managed Services</h5>
+                            <a href="#">24x7 Monitoring</a>
+                            <a href="#">NOC</a>
+                            <a href="#">Helpdesk</a>
+                            <a href="#">Infrastructure Management</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="resources.html">Resources <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="about.html">About Us <i class="fas fa-chevron-down"></i></a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="nav-cta">Talk to an Expert <i class="fas fa-arrow-right"></i></a>
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation"
+                    aria-expanded="false" aria-controls="navMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+   <!-- RESOURCES HERO -->
+<section class="resources-hero">
+    <div class="container">
+        <div class="hero-content reveal">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a> 
+                <i class="bi bi-chevron-right mx-2" style="font-size: 10px;"></i> 
+                <span>Resources</span>
+            </nav>
+            
+            <!-- Content -->
+            <h1>Contact Us</h1>
+            <p>Let's build something great together. Our team is ready to help you modernize and secure your future.</p>
+        </div>
+    </div>
+</section>
+
+
+ <!-- CONTACT SECTION -->
+<main class="contact-section">
+    <div class="container">
+        <div class="row align-items-center">
+            
+            <!-- Left Side: Contact Info Cards -->
+            <div class="col-lg-5 reveal">
+                <div class="mb-5">
+                    <span class="text-primary fw-bold text-uppercase small letter-spacing-2">Get In Touch</span>
+                    <h3 class="fw-bold  mt-2 mb-3">Let's build something <br><span class="text-primary">great together.</span></h3>
+                </div>
+
+                <!-- Phone -->
+                <div class="info-item">
+                    <div class="info-icon-box"><i class="bi bi-telephone-fill"></i></div>
+                    <div class="info-text">
+                        <h6><b>Phone Number</b></h6>
+                        <p>+92 21 3713 1111</p>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="info-item">
+                    <div class="info-icon-box"><i class="bi bi-envelope-fill"></i></div>
+                    <div class="info-text">
+                        <h6><b>Official Email</b></h6>
+                        <p>info@infraswift.com</p>
+                    </div>
+                </div>
+
+                <!-- Office -->
+                <div class="info-item">
+                    <div class="info-icon-box"><i class="bi bi-geo-alt-fill"></i></div>
+                    <div class="info-text">
+                        <h6><b>Our Office</b></h6>
+                        <p>Suite 501, Business Avenue, Block 6, PECHS, Karachi, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Business Hours (Fix Icon) -->
+                <div class="info-item">
+                    <div class="info-icon-box"><i class="bi bi-clock-fill"></i></div>
+                    <div class="info-text">
+                        <h6><b>Business Hours</b></h6>
+                        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Contact Form Card -->
+            <div class="col-lg-7 reveal">
+                <div class="contact-form-card">
+                    <form id="contactForm" class="row g-3">
+                        <div class="col-md-6">
+                            <div class="input-group-custom">
+                                <i class="bi bi-person"></i>
+                                <input type="text" class="form-control" placeholder="Full Name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group-custom">
+                                <i class="bi bi-envelope"></i>
+                                <input type="email" class="form-control" placeholder="Email Address" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group-custom">
+                                <i class="bi bi-building"></i>
+                                <input type="text" class="form-control" placeholder="Company Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group-custom">
+                                <i class="bi bi-phone"></i>
+                                <input type="text" class="form-control" placeholder="Phone Number">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group-custom">
+                                <i class="bi bi-chat-left-dots" style="top: 25px; transform: none;"></i>
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn-grad-send">
+                                <span>Send Message</span> <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Map Integration -->
+        <div class="map-container-wrap reveal">
+            <!-- Professional grayscale map link -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.9079331828784!2d67.0683057!3d24.8647065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33ee0482084c5%3A0xc3b865529f79ec7!2sBusiness%20Avenue!5e0!3m2!1sen!2s!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</main>
+
+ <!-- Back To Top -->
+    <button id="backToTop" title="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="site-footer pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- Brand col -->
+                <div class="col-lg-4 col-md-6">
+                    <img src="assets/logo.png" alt="InfraSwift Technologies" height="74px">
+
+                    <p style="font-size:.88rem;max-width:22rem;line-height:1.65;color:#9fb0cf;">Empowering businesses
+                        with innovative IT solutions to secure, scale and accelerate their digital future.</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="#" class="social-ic"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-ic"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-ic"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-ic"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Solutions -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <div class="f-title">Solutions</div>
+                    <a class="f-link" href="#">Cloud Solutions</a>
+                    <a class="f-link" href="#">Infrastructure Modernization</a>
+                    <a class="f-link" href="#">Cybersecurity</a>
+                    <a class="f-link" href="#">Networking Solutions</a>
+                    <a class="f-link" href="#">Managed Services</a>
+                    <a class="f-link" href="#">IT Consulting</a>
+                </div>
+
+                <!-- Industries -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <div class="f-title">Industries</div>
+                    <a class="f-link" href="#">Banking & Financial Services</a>
+                    <a class="f-link" href="#">Healthcare</a>
+                    <a class="f-link" href="#">Government</a>
+                    <a class="f-link" href="#">Manufacturing</a>
+                    <a class="f-link" href="#">Education</a>
+                    <a class="f-link" href="#">Retail</a>
+                </div>
+
+                <!-- Resources -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <div class="f-title">Resources</div>
+                    <a class="f-link" href="#">Blog</a>
+                    <a class="f-link" href="#">Case Studies</a>
+                    <a class="f-link" href="#">Whitepapers</a>
+                    <a class="f-link" href="#">Webinars</a>
+                    <a class="f-link" href="#">Events</a>
+                </div>
+
+                <!-- Company + Contact -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <div class="f-title">Company</div>
+                    <a class="f-link" href="#">About Us</a>
+                    <a class="f-link" href="#">Our Team</a>
+                    <a class="f-link" href="#">Careers</a>
+                    <a class="f-link" href="#">Partners</a>
+                    <a class="f-link" href="#">Contact Us</a>
+                </div>
+
+            </div>
+
+            <!-- Contact strip -->
+            <div class="row mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,.08);">
+                <div class="col-12">
+                    <div class="f-title mb-2">Contact Us</div>
+                    <div class="d-flex flex-wrap gap-3 gap-md-4">
+                        <a class="f-link d-inline-flex align-items-center gap-2" href="tel:+922137131111"><i
+                                class="bi bi-telephone-fill"></i>+92 21 3713 1111</a>
+                        <a class="f-link d-inline-flex align-items-center gap-2" href="mailto:info@infraswift.com"><i
+                                class="bi bi-envelope-fill"></i>info@infraswift.com</a>
+                        <a class="f-link d-inline-flex align-items-center gap-2" href="#"><i
+                                class="bi bi-geo-alt-fill"></i>Suite 501, Business Avenue, Block 6, PECHS, Karachi,
+                            Pakistan</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,.09);margin:1.5rem 0 1rem;">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+                <small style="color:#9fb0cf;">© 2024 InfraSwift Technologies (Pvt.) Ltd. All Rights Reserved.</small>
+                <div class="d-flex gap-3">
+                    <a class="f-link" style="font-size:.8rem;" href="#">Privacy Policy</a>
+                    <a class="f-link" style="font-size:.8rem;" href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- UPDATED JQUERY SCRIPT -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+   $(function() {
+            // Navbar shadow
+            $(window).on('scroll', function() {
+                var s = $(this).scrollTop();
+                $('.navbar').toggleClass('scrolled', s > 30);
+                $('#backToTop').toggleClass('show', s > 400);
+            });
+
+            // Mobile nav menu toggle
+            $('#navToggle').on('click', function() {
+                $('#navMenu').toggleClass('open');
+                $(this).attr('aria-expanded', $('#navMenu').hasClass('open'));
+            });
+
+            // Mega menu tap-to-open on mobile/tablet
+            $('.mega-parent > a').on('click', function(e) {
+                if ($(window).width() <= 991) {
+                    e.preventDefault();
+                    $(this).parent().toggleClass('active');
+                }
+            });
+
+            // Reveal on scroll
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+            // Back to top
+            $('#backToTop').on('click', function() {
+                $('html,body').animate({ scrollTop: 0 }, 500);
+            });
+
+            // Mobile menu close on link click
+            $('#mainNav .nav-link:not(.dropdown-toggle), #mainNav .dropdown-item, .btn-expert').on('click',
+                function() {
+                    var c = document.querySelector('#mainNav');
+                    if (c && c.classList.contains('show')) new bootstrap.Collapse(c).hide();
+                });
+        });
+    
+  
+        $(document).ready(function() {
+    // Filter Functionality
+    $('.filter-item').on('click', function() {
+        // Active class update
+        $('.filter-item').removeClass('active');
+        $(this).addClass('active');
+
+        var category = $(this).data('cat');
+
+        if(category === 'all') {
+            $('.res-item').fadeIn(400);
+        } else {
+            $('.res-item').hide();
+            $('.' + category).fadeIn(400);
+        }
+    });
+
+    // Simple Newsletter Alert
+    $('.news-form').on('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for subscribing!');
+        $(this).find('input').val('');
+    });
+});
+ $(function() {
+            // Reveal on scroll
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+            // Form Submit Animation
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+                const btn = $(this).find('.btn-send');
+                btn.html('Sending... <i class="bi bi-hourglass-split"></i>');
+                setTimeout(() => {
+                    alert('Message sent successfully!');
+                    btn.html('Send Message <i class="bi bi-check-lg"></i>');
+                }, 1500);
+            });
+        });
+</script>
+</body>
+</html>

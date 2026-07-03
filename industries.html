@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries | InfraSwift Technologies</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --is-blue: #1857d6;
+            --is-blue-dark: #0f3aa0;
+            --is-navy: #0a1228;
+            --is-muted: #64748b;
+            --is-bg-light: #f8fafc;
+            --is-green: #2bb673;
+            --is-ink: #0f1b35;
+            --is-line: #e7eaf0;
+            --is-bg-soft: #f5f7fb;
+            --primary: #2599B6;
+            --primary-dark: #4B71B2;
+            --accent: #84B971;
+            --success: #84B971;
+            --primary-glow: rgba(37, 153, 182, 0.35);
+            --node-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+            --soft-border: rgba(37, 153, 182, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0, 97, 255, 0.08);
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.05);
+        }
+
+        .nav-shell {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            flex-shrink: 0;
+        }
+
+        .brand-logo img {
+            width: 168px;
+            height: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-menu a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #1e293b;
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 10px 2px;
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .nav-menu i {
+            font-size: 0.62rem;
+            color: #64748b;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 46px;
+            padding: 0 22px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            color: #fff;
+            border: none;
+            box-shadow: 0 12px 28px rgba(37, 153, 182, 0.25);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .nav-cta:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, var(--success), var(--primary));
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(0, 97, 255, 0.16);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--text-dark);
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* MEGA MENU */
+        .mega-parent { position: relative; }
+        .mega-parent>a { position: relative; }
+        .mega-parent>a i { margin-left: 6px; font-size: 11px; transition: .3s; }
+        .mega-parent:hover>a i { transform: rotate(180deg); }
+
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 1200px;
+            max-width: 95vw;
+            background: rgba(255, 255, 255, .98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(37, 153, 182, .15);
+            border-radius: 20px;
+            padding: 35px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 25px 60px rgba(15, 23, 42, .10), 0 10px 30px rgba(37, 153, 182, .08);
+            transition: .35s ease;
+            z-index: 9999;
+        }
+
+        .mega-menu::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            border-radius: 20px 20px 0 0;
+            background: linear-gradient(90deg, #2599B6, #84B971);
+        }
+
+        .mega-parent:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .mega-col { border-right: 1px solid rgba(37, 153, 182, .15); padding-right: 25px; }
+        .mega-col:last-child { border-right: none; }
+        .mega-col h5 { color: #2599B6; font-size: 18px; font-weight: 800; line-height: 1.4; margin-bottom: 18px; }
+        .mega-col h5::after { content: ''; display: block; width: 75px; height: 3px; margin-top: 10px; background: linear-gradient(90deg, #2599B6, #84B971); border-radius: 10px; }
+        .mega-col a { display: block; color: #334155 !important; text-decoration: none; font-size: 15px; font-weight: 600; line-height: 1.6; padding: 8px 0; transition: .3s ease; }
+        .mega-col a:hover { color: #2599B6 !important; padding-left: 10px; background: linear-gradient(90deg, rgba(37, 153, 182, .05), rgba(132, 185, 113, .05)); border-radius: 8px; padding-right: 10px; }
+        .mega-col { animation: fadeMega .5s ease; }
+
+        @keyframes fadeMega {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media(max-width:991px) {
+            .mega-menu { position: static; width: 100%; max-width: 100%; transform: none; opacity: 1; visibility: visible; display: none; grid-template-columns: 1fr; margin-top: 12px; padding: 20px; }
+            .mega-parent.active .mega-menu { display: grid; }
+            .mega-col { border-right: none; border-bottom: 1px solid rgba(37, 153, 182, .15); padding-right: 0; padding-bottom: 15px; }
+            .mega-col:last-child { border-bottom: none; }
+            .mega-parent:hover .mega-menu { transform: none; }
+
+            .nav-menu { display: none; flex-direction: column; align-items: flex-start; width: 100%; gap: 4px; padding: 14px 0; }
+            .nav-menu.open { display: flex; }
+            .nav-shell { flex-wrap: wrap; }
+            .nav-toggle { display: inline-flex; }
+            .nav-cta { font-size: 0.75rem; padding: 0 16px; min-height: 40px; }
+        }
+
+        /* --- INDUSTRIES PAGE SPECIFIC --- */
+        .industries-section {
+            padding: 20px 0 80px;
+            background-color: #fff;
+        }
+
+        /* Hero banner with background image */
+        .industries-hero {
+            position: relative;
+            background-image: linear-gradient(90deg,
+                    rgba(6, 13, 26, 1) 0%,
+                    rgba(6, 13, 26, 0.85) 35%,
+                    rgba(6, 13, 26, 0.4) 70%,
+                    rgba(6, 13, 26, 0.1) 100%),
+                url('assets/MAinBanner.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            padding: 100px 0;
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .industries-header {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .industries-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff !important;
+            margin-bottom: 16px;
+        }
+
+        .industries-header p {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-size: 1.05rem;
+            max-width: 560px;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-nav {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff !important;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb-nav a { color: rgba(255, 255, 255, 0.7) !important; text-decoration: none; transition: 0.3s; }
+        .breadcrumb-nav a:hover { color: #ffffff !important; }
+        .breadcrumb-nav i { color: #ffffff !important; }
+
+        @media (max-width: 991px) {
+            .industries-hero { padding: 60px 0; min-height: 220px; }
+            .industries-header { text-align: center; }
+            .industries-header p { margin-left: auto; margin-right: auto; }
+        }
+
+        @media (max-width: 575px) {
+            .industries-header h1 { font-size: 2rem; }
+        }
+
+        /* Industry Cards */
+        .ind-grid-wrap { margin-top: 40px; }
+
+        .ind-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 210px;
+            display: flex;
+            align-items: flex-end;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .ind-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.18);
+        }
+
+        .ind-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.7s ease;
+            z-index: 0;
+        }
+
+        .ind-card:hover .ind-bg {
+            transform: scale(1.12);
+        }
+
+        .ind-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(6, 13, 26, 0.1) 0%, rgba(6, 13, 26, 0.55) 55%, rgba(6, 13, 26, 0.92) 100%);
+            z-index: 1;
+        }
+
+        .ind-icon-box {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            width: 46px;
+            height: 46px;
+            background: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .ind-card:hover .ind-icon-box {
+            transform: rotate(-6deg) scale(1.08);
+        }
+
+        .ind-icon-box i {
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ind-label {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.05rem;
+        }
+
+        /* Bottom CTA Banner (shared style with Solutions page) */
+        .custom-solution-cta {
+            background: linear-gradient(135deg, #060d1a 0%, #0a1740 45%, #123166 100%);
+            border-radius: 24px;
+            padding: 60px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+        }
+
+        .custom-solution-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(90deg, #060d1a 0%, #060d1a 60%, transparent 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .cta-content { position: relative; z-index: 2; }
+        .cta-content h2 { font-size: 2rem; font-weight: 800; margin-bottom: 15px; }
+        .cta-content p { opacity: 0.8; max-width: 450px; margin-bottom: 30px; }
+
+        .btn-white-cta {
+            background: #fff;
+            color: #060d1a;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-white-cta:hover { background: #f1f5f9; transform: translateY(-3px); }
+
+        .cta-3d-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 58%;
+            object-fit: cover;
+            object-position: center;
+            -webkit-mask-image: linear-gradient(to left, black 55%, transparent 100%);
+            mask-image: linear-gradient(to left, black 55%, transparent 100%);
+            transform: scale(1.04);
+            transition: transform 1s ease;
+            animation: ctaZoom 8s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        @keyframes ctaZoom {
+            0%, 100% { transform: scale(1.04); }
+            50% { transform: scale(1.1); }
+        }
+
+        .custom-solution-cta:hover .cta-3d-img {
+            animation-play-state: paused;
+            transform: scale(1.14);
+        }
+
+        @media (max-width: 991px) {
+            .cta-3d-img { display: none; }
+            .custom-solution-cta::before { display: none; }
+            .custom-solution-cta { padding: 40px 30px; text-align: center; }
+            .cta-content p { margin-left: auto; margin-right: auto; }
+        }
+
+        /* ===== FOOTER ===== */
+        footer.site-footer { background: var(--is-navy); color: #b9c4d8; }
+        .f-brand-logo { width: 42px; height: 42px; border-radius: 9px; overflow: hidden; }
+        .f-brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+        footer .brand-name { font-size: 1rem; }
+        footer .f-title { color: #fff; font-weight: 700; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; margin-bottom: .9rem; }
+        footer a.f-link { color: #9fb0cf; font-size: .86rem; display: block; padding: .26rem 0; transition: color .2s; text-decoration: none; }
+        footer a.f-link:hover { color: #fff; }
+        .social-ic { width: 34px; height: 34px; border-radius: 8px; background: rgba(255, 255, 255, .08); display: grid; place-items: center; color: #cdd8ea; transition: all .25s; }
+        .social-ic:hover { background: var(--is-blue); color: #fff; }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1); }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ===== BACK TO TOP ===== */
+        #backToTop {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--is-blue); color: #fff;
+            display: grid; place-items: center; font-size: 1.1rem;
+            box-shadow: 0 4px 16px rgba(24, 87, 214, .35);
+            opacity: 0; pointer-events: none;
+            transition: opacity .3s, transform .3s;
+            transform: translateY(10px);
+            border: none; cursor: pointer;
+        }
+
+        #backToTop.show { opacity: 1; pointer-events: all; transform: translateY(0); }
+        #backToTop:hover { background: var(--is-blue-dark); }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======== NAVBAR ======== -->
+   <nav class="site-nav" id="siteNav">
+        <div class="container nav-shell">
+            <a class="brand-logo" href="index.html">
+                <img src="assets/Infraswift-01.png" alt="InfraSwift Technologies">
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="industries.html">Industries <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="careers.html">Careers <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="success.html">Success Stories</a></li>
+                <li class="mega-parent">
+                    <a href="solutions.html">
+                        Solutions
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+
+                    <div class="mega-menu">
+                        <div class="mega-col">
+                            <h5>Cloud Solutions</h5>
+                            <a href="#">Microsoft Azure</a>
+                            <a href="#">AWS</a>
+                            <a href="#">VMware Cloud Foundation</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Infrastructure Modernization</h5>
+                            <a href="#">VMware vSphere</a>
+                            <a href="#">VMware VCF</a>
+                            <a href="#">Hyper-V</a>
+                            <a href="#">Storage & Backup</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Cybersecurity</h5>
+                            <a href="#">SOC Services</a>
+                            <a href="#">Fortinet</a>
+                            <a href="#">Microsoft Security</a>
+                            <a href="#">Endpoint Protection</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Networking</h5>
+                            <a href="#">Cisco</a>
+                            <a href="#">Aruba</a>
+                            <a href="#">SD-WAN</a>
+                            <a href="#">Wireless</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Managed Services</h5>
+                            <a href="#">24x7 Monitoring</a>
+                            <a href="#">NOC</a>
+                            <a href="#">Helpdesk</a>
+                            <a href="#">Infrastructure Management</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="resources.html">Resources <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="about.html">About Us <i class="fas fa-chevron-down"></i></a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="nav-cta">Talk to an Expert <i class="fas fa-arrow-right"></i></a>
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation"
+                    aria-expanded="false" aria-controls="navMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Industries Hero -->
+    <section class="industries-hero">
+        <div class="container">
+            <div class="industries-header">
+                <div class="breadcrumb-nav">Home <i class="bi bi-chevron-right mx-1" style="font-size: 10px;"></i> Industries</div>
+                <h1>Industries We Serve</h1>
+                <p>We deliver tailored IT solutions to meet the unique challenges of your industry.</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="industries-section">
+        <div class="container">
+
+            <!-- Industries Grid -->
+            <div class="ind-grid-wrap">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+
+                    <div class="col reveal">
+                        <div class="ind-card">
+                            <div class="ind-bg" style="background-image: url('assets/industry_Banking.png');"></div>
+                            <div class="ind-icon-box"><i class="bi bi-bank"></i></div>
+                            <div class="ind-label">Banking & Financial Services</div>
+                        </div>
+                    </div>
+
+                    <div class="col reveal">
+                        <div class="ind-card">
+                            <div class="ind-bg" style="background-image: url('assets/industry_Healthcare.png');"></div>
+                            <div class="ind-icon-box"><i class="bi bi-heart-pulse"></i></div>
+                            <div class="ind-label">Healthcare</div>
+                        </div>
+                    </div>
+
+                    <div class="col reveal">
+                        <div class="ind-card">
+                            <div class="ind-bg" style="background-image: url('assets/industry_Government.png');"></div>
+                            <div class="ind-icon-box"><i class="bi bi-bank2"></i></div>
+                            <div class="ind-label">Government</div>
+                        </div>
+                    </div>
+
+                    <div class="col reveal">
+                        <div class="ind-card">
+                            <div class="ind-bg" style="background-image: url('assets/industry_Manufacturing.png');"></div>
+                            <div class="ind-icon-box"><i class="bi bi-gear-wide-connected"></i></div>
+                            <div class="ind-label">Manufacturing</div>
+                        </div>
+                    </div>
+
+                    <div class="col reveal">
+                        <div class="ind-card">
+                            <div class="ind-bg" style="background-image: url('assets/industry_Education.png');"></div>
+                            <div class="ind-icon-box"><i class="bi bi-mortarboard"></i></div>
+                            <div class="ind-label">Education</div>
+                        </div>
+                    </div>
+
+                    <div class="col reveal">
+                        <div class="ind-card">
+                            <div class="ind-bg" style="background-image: url('assets/industry_Retail.png');"></div>
+                            <div class="ind-icon-box"><i class="bi bi-shop"></i></div>
+                            <div class="ind-label">Retail</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bottom CTA Banner -->
+            <div class="custom-solution-cta reveal">
+                <div class="cta-content">
+                    <h2>Don't see your industry?</h2>
+                    <p>We have solutions for every business. Let's discuss your needs.</p>
+                    <a href="#" class="btn-white-cta">Contact Us <i class="bi bi-arrow-right"></i></a>
+                </div>
+                <img src="assets/industry_Contact.png" class="cta-3d-img" alt="Team discussing solutions">
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Back To Top -->
+    <button id="backToTop" title="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="site-footer pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- Brand col -->
+                <div class="col-lg-4 col-md-6">
+                    <img src="assets/logo.png" alt="InfraSwift Technologies" height="74px">
+
+                    <p style="font-size:.88rem;max-width:22rem;line-height:1.65;color:#9fb0cf;">Empowering businesses
+                        with innovative IT solutions to secure, scale and accelerate their digital future.</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="#" class="social-ic"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-ic"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-ic"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-ic"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Solutions -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <div class="f-title">Solutions</div>
+                    <a class="f-link" href="#">Cloud Solutions</a>
+                    <a class="f-link" href="#">Infrastructure Modernization</a>
+                    <a class="f-link" href="#">Cybersecurity</a>
+                    <a class="f-link" href="#">Networking Solutions</a>
+                    <a class="f-link" href="#">Managed Services</a>
+                    <a class="f-link" href="#">IT Consulting</a>
+                </div>
+
+                <!-- Industries -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <div class="f-title">Industries</div>
+                    <a class="f-link" href="#">Banking & Financial Services</a>
+                    <a class="f-link" href="#">Healthcare</a>
+                    <a class="f-link" href="#">Government</a>
+                    <a class="f-link" href="#">Manufacturing</a>
+                    <a class="f-link" href="#">Education</a>
+                    <a class="f-link" href="#">Retail</a>
+                </div>
+
+                <!-- Resources -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <div class="f-title">Resources</div>
+                    <a class="f-link" href="#">Blog</a>
+                    <a class="f-link" href="#">Case Studies</a>
+                    <a class="f-link" href="#">Whitepapers</a>
+                    <a class="f-link" href="#">Webinars</a>
+                    <a class="f-link" href="#">Events</a>
+                </div>
+
+                <!-- Company + Contact -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <div class="f-title">Company</div>
+                    <a class="f-link" href="#">About Us</a>
+                    <a class="f-link" href="#">Our Team</a>
+                    <a class="f-link" href="#">Careers</a>
+                    <a class="f-link" href="#">Partners</a>
+                    <a class="f-link" href="#">Contact Us</a>
+                </div>
+
+            </div>
+
+            <!-- Contact strip -->
+            <div class="row mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,.08);">
+                <div class="col-12">
+                    <div class="f-title mb-2">Contact Us</div>
+                    <div class="d-flex flex-wrap gap-3 gap-md-4">
+                        <a class="f-link d-inline-flex align-items-center gap-2" href="tel:+922137131111"><i
+                                class="bi bi-telephone-fill"></i>+92 21 3713 1111</a>
+                        <a class="f-link d-inline-flex align-items-center gap-2" href="mailto:info@infraswift.com"><i
+                                class="bi bi-envelope-fill"></i>info@infraswift.com</a>
+                        <a class="f-link d-inline-flex align-items-center gap-2" href="#"><i
+                                class="bi bi-geo-alt-fill"></i>Suite 501, Business Avenue, Block 6, PECHS, Karachi,
+                            Pakistan</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,.09);margin:1.5rem 0 1rem;">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+                <small style="color:#9fb0cf;">© 2024 InfraSwift Technologies (Pvt.) Ltd. All Rights Reserved.</small>
+                <div class="d-flex gap-3">
+                    <a class="f-link" style="font-size:.8rem;" href="#">Privacy Policy</a>
+                    <a class="f-link" style="font-size:.8rem;" href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // Navbar shadow
+            $(window).on('scroll', function() {
+                var s = $(this).scrollTop();
+                $('.navbar').toggleClass('scrolled', s > 30);
+                $('#backToTop').toggleClass('show', s > 400);
+            });
+
+            // Mobile nav menu toggle
+            $('#navToggle').on('click', function() {
+                $('#navMenu').toggleClass('open');
+                $(this).attr('aria-expanded', $('#navMenu').hasClass('open'));
+            });
+
+            // Mega menu tap-to-open on mobile/tablet
+            $('.mega-parent > a').on('click', function(e) {
+                if ($(window).width() <= 991) {
+                    e.preventDefault();
+                    $(this).parent().toggleClass('active');
+                }
+            });
+
+            // Reveal on scroll
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+            // Back to top
+            $('#backToTop').on('click', function() {
+                $('html,body').animate({ scrollTop: 0 }, 500);
+            });
+
+            // Mobile menu close on link click
+            $('#mainNav .nav-link:not(.dropdown-toggle), #mainNav .dropdown-item, .btn-expert').on('click',
+                function() {
+                    var c = document.querySelector('#mainNav');
+                    if (c && c.classList.contains('show')) new bootstrap.Collapse(c).hide();
+                });
+        });
+    </script>
+</body>
+
+</html>

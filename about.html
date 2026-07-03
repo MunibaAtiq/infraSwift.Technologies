@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | InfraSwift Technologies</title>
+    
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+ --is-blue: #1857d6;
+      --is-blue-dark: #0f3aa0;
+                  --is-navy: #0a1228;
+            --is-muted: #64748b;
+            --is-bg-light: #f8fafc;
+            --is-green: #2bb673;
+      --is-navy: #0a1228;
+      --is-ink: #0f1b35;
+      --is-muted: #6b7689;
+      --is-line: #e7eaf0;
+      --is-bg-soft: #f5f7fb;
+       --primary: #2599B6;
+            --primary-dark: #4B71B2;
+            --accent: #84B971;
+            --success: #84B971;
+            --primary-glow: rgba(37, 153, 182, 0.35);
+              --node-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+            --soft-border: rgba(37, 153, 182, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+ /* --- NAVBAR --- */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0, 97, 255, 0.08);
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.05);
+        }
+
+        .nav-shell {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            flex-shrink: 0;
+        }
+
+        .brand-logo img {
+            width: 168px;
+            height: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-menu a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #1e293b;
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 10px 2px;
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .nav-menu i {
+            font-size: 0.62rem;
+            color: #64748b;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+         .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 46px;
+            padding: 0 22px;
+            border-radius: 6px;
+            background: linear-gradient(135deg,
+                    var(--primary),
+                    var(--success));
+
+            color: #fff;
+            border: none;
+            box-shadow: 0 12px 28px rgba(37, 153, 182, 0.25);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .nav-cta:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            background: linear-gradient(135deg,
+                    var(--success),
+                    var(--primary));
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(0, 97, 255, 0.16);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--text-dark);
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* =========================
+           MEGA MENU DROPDOWN
+        ========================= */
+
+        .mega-parent {
+            position: relative;
+        }
+
+        .mega-parent>a {
+            position: relative;
+        }
+
+        .mega-parent>a i {
+            margin-left: 6px;
+            font-size: 11px;
+            transition: .3s;
+        }
+
+        .mega-parent:hover>a i {
+            transform: rotate(180deg);
+        }
+
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+
+            width: 1200px;
+            max-width: 95vw;
+
+            background: rgba(255, 255, 255, .98);
+            backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(37, 153, 182, .15);
+            border-radius: 20px;
+
+            padding: 35px;
+
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            box-shadow:
+                0 25px 60px rgba(15, 23, 42, .10),
+                0 10px 30px rgba(37, 153, 182, .08);
+
+            transition: .35s ease;
+
+            z-index: 9999;
+        }
+
+        .mega-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            border-radius: 20px 20px 0 0;
+
+            background: linear-gradient(90deg,
+                    #2599B6,
+                    #84B971);
+        }
+
+        .mega-parent:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .mega-col {
+            border-right: 1px solid rgba(37, 153, 182, .15);
+            padding-right: 25px;
+        }
+
+        .mega-col:last-child {
+            border-right: none;
+        }
+
+        .mega-col h5 {
+            color: #2599B6;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.4;
+
+            margin-bottom: 18px;
+        }
+
+        .mega-col h5::after {
+            content: '';
+            display: block;
+
+            width: 75px;
+            height: 3px;
+
+            margin-top: 10px;
+
+            background: linear-gradient(90deg,
+                    #2599B6,
+                    #84B971);
+
+            border-radius: 10px;
+        }
+
+        .mega-col a {
+            display: block;
+
+            color: #334155 !important;
+            text-decoration: none;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            line-height: 1.6;
+
+            padding: 8px 0;
+
+            transition: .3s ease;
+        }
+
+        .mega-col a:hover {
+            color: #2599B6 !important;
+            padding-left: 10px;
+        }
+
+        .mega-col a:hover {
+            background: linear-gradient(90deg,
+                    rgba(37, 153, 182, .05),
+                    rgba(132, 185, 113, .05));
+
+            border-radius: 8px;
+            padding-right: 10px;
+        }
+
+        .mega-col {
+            animation: fadeMega .5s ease;
+        }
+
+        @keyframes fadeMega {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width:991px) {
+
+            .mega-menu {
+                position: static;
+
+                width: 100%;
+                max-width: 100%;
+
+                transform: none;
+
+                opacity: 1;
+                visibility: visible;
+
+                display: none;
+
+                grid-template-columns: 1fr;
+
+                margin-top: 12px;
+                padding: 20px;
+            }
+
+            .mega-parent.active .mega-menu {
+                display: grid;
+            }
+
+            .mega-col {
+                border-right: none;
+                border-bottom: 1px solid rgba(37, 153, 182, .15);
+
+                padding-right: 0;
+                padding-bottom: 15px;
+            }
+
+            .mega-col:last-child {
+                border-bottom: none;
+            }
+
+            .mega-parent:hover .mega-menu {
+                transform: none;
+            }
+        }
+        /* --- SECTION 1: HERO & STATS --- */
+        .about-hero {
+            position: relative;
+            padding: 60px 0;
+            background: #fff;
+        }
+
+        .hero-img-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            height: 90%;
+            z-index: 1;
+        }
+
+        .hero-img-overlay {
+            overflow: hidden;
+        }
+
+        .hero-img-overlay img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mask-image: linear-gradient(to left, black 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);
+            transition: transform 8s ease;
+            transform: scale(1.08);
+        }
+
+        .about-hero:hover .hero-img-overlay img {
+            transform: scale(1.16);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .breadcrumb-custom {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .breadcrumb-custom a { color: var(--is-muted); text-decoration: none; }
+        .breadcrumb-custom span { color: var(--is-blue); }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--is-navy);
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            max-width: 550px;
+            color: var(--is-muted);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        /* Stats Cards */
+        .stat-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            height: 100%;
+        }
+
+        .stat-card {
+            cursor: default;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 153, 182, 0.15);
+            border-color: var(--primary);
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .stat-card:hover i {
+            transform: scale(1.15) translateY(-4px);
+        }
+
+        .stat-card h3 {
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-card span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--is-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- SECTION 2: MISSION & VISION --- */
+        .mission-vision-sec {
+            padding: 30px 0;
+            background: #fff;
+        }
+
+        .mission-box {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;    
+        }
+
+        .mission-box {
+            transition: transform 0.35s ease;
+        }
+
+        .mission-box:hover {
+            transform: translateX(6px);
+        }
+
+        .mission-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 18px rgba(37, 153, 182, 0.25);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mission-box:hover .mission-icon {
+            transform: rotate(-8deg) scale(1.1);
+        }
+
+        .mission-content h4 {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .mission-content p {
+            color: var(--is-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .team-img-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: box-shadow 0.4s ease;
+        }
+
+        .team-img-wrapper:hover {
+            box-shadow: 0 30px 60px rgba(37, 153, 182, 0.25);
+        }
+
+        .team-img-wrapper img {
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .team-img-wrapper:hover img {
+            transform: scale(1.08);
+        }
+
+     /* --- CORE VALUES (EXACT IMAGE MATCH FIX) --- */
+    .values-strip {
+        background: #050b1a; /* Dark Navy from Image */
+        padding: 20px 0;
+        color: #fff;
+    }
+
+    .values-eyebrow {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #94a3b8;
+        margin-bottom: 15px;
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .value-col-wrapper {
+        position: relative;
+        text-align: center;
+        padding: 0 0;
+    }
+
+    /* Vertical Divider Line Fix */
+    /* Hum 'col' par check lagayenge taake last column ke baad line na aaye */
+    @media (min-width: 992px) {
+        .values-strip .col:not(:last-child) .value-col-wrapper::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.15); /* Light grey divider */
+        }
+    }
+
+    .val-icon-box {
+        font-size: 2.8rem;
+        margin-bottom: 22px;
+        display: inline-block;
+        background: linear-gradient(135deg, #2599B6 0%, #84B971 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .value-col-wrapper span {
+        display: block;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: #fff;
+        letter-spacing: 0.5px;
+    }
+
+    .value-col-wrapper:hover .val-icon-box {
+        transform: scale(1.2) translateY(-8px);
+    }
+
+    /* --- WHY CHOOSE US (PREMIUM UI) --- */
+    .why-choose-us {
+        padding: 40px 0;
+        background: #fff;
+        position: relative;
+    }
+
+    .ui-blob {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(37, 153, 182, 0.05) 0%, transparent 70%);
+        top: 10%;
+        left: -100px;
+        z-index: 0;
+    }
+
+    .choose-grid-card {
+        padding: 40px;
+        border-radius: 24px;
+        background: #fff;
+        border: 1px solid #f1f5f9;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        transition: 0.4s;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .choose-grid-card:hover {
+        border-color: var(--primary);
+        box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+        transform: translateY(-10px);
+    }
+
+    .icon-box-grad {
+        width: 55px;
+        height: 55px;
+        background: linear-gradient(135deg, var(--primary), var(--success));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .choose-grid-card:hover .icon-box-grad {
+        transform: rotate(-6deg) scale(1.1);
+    }
+
+    /* Unified theme button used across the page */
+    .btn-theme {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 26px;
+        border-radius: 6px;
+        background: linear-gradient(135deg, var(--primary), var(--success));
+        color: #fff !important;
+        border: none;
+        box-shadow: 0 12px 28px rgba(37, 153, 182, 0.25);
+        font-weight: 800;
+        text-decoration: none;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .btn-theme:hover {
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 16px 34px rgba(37, 153, 182, 0.35);
+        background: linear-gradient(135deg, var(--success), var(--primary));
+    }
+
+    .text-primary {
+        color: var(--primary) !important;
+    }
+
+    .premium-stats-card .bi-uptime {
+        background: linear-gradient(135deg, var(--primary), var(--success));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+        animation: pulseIcon 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulseIcon {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.12); }
+    }
+
+    /* Stats Card (Availability) */
+    .premium-stats-card {
+        background: var(--is-navy);
+        border-radius: 30px;
+        padding: 60px 40px;
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 40px 80px rgba(10, 18, 40, 0.2);
+    }
+
+    .premium-stats-card h2 {
+        font-size: 4rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+        margin-bottom: 10px;
+        background: linear-gradient(to bottom, #fff, #94a3b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+   
+       /* ===== FOOTER ===== */
+    footer.site-footer { background: var(--is-navy); color: #b9c4d8; }
+    .f-brand-logo { width: 42px; height: 42px; border-radius: 9px; overflow: hidden; }
+    .f-brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+    footer .brand-name { font-size: 1rem; }
+    footer .f-title { color: #fff; font-weight: 700; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; margin-bottom: .9rem; }
+    footer a.f-link { color: #9fb0cf; font-size: .86rem; display: block; padding: .26rem 0; transition: color .2s; text-decoration: none; }
+    footer a.f-link:hover { color: #fff; }
+    .social-ic {
+      width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,.08);
+      display: grid; place-items: center; color: #cdd8ea; transition: all .25s;
+    }
+    .social-ic:hover { background: var(--is-blue); color: #fff; }
+
+    /* ===== ANIMATIONS ===== */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ===== FULLY RESPONSIVE ===== */
+    @media (max-width: 991px) {
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            gap: 4px;
+            padding: 14px 0;
+        }
+
+        .nav-menu.open {
+            display: flex;
+        }
+
+        .nav-shell {
+            flex-wrap: wrap;
+        }
+
+        .nav-toggle {
+            display: inline-flex;
+        }
+
+        .nav-cta {
+            font-size: 0.75rem;
+            padding: 0 16px;
+            min-height: 40px;
+        }
+
+        .hero-img-overlay {
+            width: 60%;
+            opacity: 0.35;
+        }
+
+        .about-hero h1 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .hero-img-overlay {
+            display: none;
+        }
+
+        .about-hero {
+            padding: 40px 0;
+        }
+
+        .about-hero h1 {
+            font-size: 1.9rem;
+        }
+
+        .mission-vision-sec,
+        .why-choose-us {
+            padding: 60px 0;
+        }
+
+        .value-col-wrapper {
+            padding: 20px 0;
+        }
+
+        .values-strip .col:not(:last-child) .value-col-wrapper {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .premium-stats-card {
+            padding: 40px 24px;
+        }
+
+        .premium-stats-card h2 {
+            font-size: 2.8rem;
+        }
+
+        .choose-grid-card {
+            padding: 28px;
+        }
+
+        #backToTop {
+            right: 1rem;
+            bottom: 1rem;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .about-hero h1 {
+            font-size: 1.6rem;
+        }
+
+        .stat-card h3 {
+            font-size: 1.4rem;
+        }
+
+        .mega-menu {
+            padding: 16px;
+        }
+    }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.001ms !important;
+            transition-duration: 0.001ms !important;
+        }
+    }
+
+    /* ===== BACK TO TOP ===== */
+    #backToTop {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--is-blue); color: #fff;
+      display: grid; place-items: center; font-size: 1.1rem;
+      box-shadow: 0 4px 16px rgba(24,87,214,.35);
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      transform: translateY(10px);
+      border: none; cursor: pointer;
+    }
+    #backToTop.show { opacity: 1; pointer-events: all; transform: translateY(0); }
+    #backToTop:hover { background: var(--is-blue-dark); }
+    </style>
+</head>
+<body>
+
+  <!-- ======== NAVBAR ======== -->
+  <nav class="site-nav" id="siteNav">
+        <div class="container nav-shell">
+            <a class="brand-logo" href="index.html">
+                <img src="assets/Infraswift-01.png" alt="InfraSwift Technologies">
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="industries.html">Industries <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="careers.html">Careers <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="success.html">Success Stories</a></li>
+                <li class="mega-parent">
+                    <a href="solutions.html">
+                        Solutions
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+
+                    <div class="mega-menu">
+                        <div class="mega-col">
+                            <h5>Cloud Solutions</h5>
+                            <a href="#">Microsoft Azure</a>
+                            <a href="#">AWS</a>
+                            <a href="#">VMware Cloud Foundation</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Infrastructure Modernization</h5>
+                            <a href="#">VMware vSphere</a>
+                            <a href="#">VMware VCF</a>
+                            <a href="#">Hyper-V</a>
+                            <a href="#">Storage & Backup</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Cybersecurity</h5>
+                            <a href="#">SOC Services</a>
+                            <a href="#">Fortinet</a>
+                            <a href="#">Microsoft Security</a>
+                            <a href="#">Endpoint Protection</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Networking</h5>
+                            <a href="#">Cisco</a>
+                            <a href="#">Aruba</a>
+                            <a href="#">SD-WAN</a>
+                            <a href="#">Wireless</a>
+                        </div>
+
+                        <div class="mega-col">
+                            <h5>Managed Services</h5>
+                            <a href="#">24x7 Monitoring</a>
+                            <a href="#">NOC</a>
+                            <a href="#">Helpdesk</a>
+                            <a href="#">Infrastructure Management</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="resources.html">Resources <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="about.html">About Us <i class="fas fa-chevron-down"></i></a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="nav-cta">Talk to an Expert <i class="fas fa-arrow-right"></i></a>
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation"
+                    aria-expanded="false" aria-controls="navMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- HERO SECTION -->
+    <section class="about-hero">
+        <div class="hero-img-overlay">
+            <!-- Replace with your actual building image -->
+            <img src="assets/About.png" alt="Building">
+        </div>
+        
+        <div class="container hero-content">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="breadcrumb-custom">
+                        <a href="#">Home</a> <i class="bi bi-chevron-right mx-2 small"></i> <span>About Us</span>
+                    </div>
+                    
+                    <h1>About InfraSwift</h1>
+                    <p>InfraSwift Technologies empowers organizations to modernize infrastructure, strengthen security, and drive digital transformation with future-ready solutions and expert guidance.</p>
+                    
+                    <div class="row g-3">
+                        <div class="col-6 col-md-3 reveal">
+                            <div class="stat-card">
+                                <i class="bi bi-people"></i>
+                                <h3 class="counter" data-target="10">0</h3>
+                                <span>Years of Experience</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 reveal">
+                            <div class="stat-card">
+                                <i class="bi bi-building"></i>
+                                <h3 class="counter" data-target="50">0</h3>
+                                <span>Enterprise Clients</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 reveal">
+                            <div class="stat-card">
+                                <i class="bi bi-diagram-3"></i>
+                                <h3 class="counter" data-target="100">0</h3>
+                                <span>Projects Delivered</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 reveal">
+                            <div class="stat-card">
+                                <i class="bi bi-cpu"></i>
+                                <h3 class="counter" data-target="10">0</h3>
+                                <span>Technology Partners</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSION & VISION SECTION -->
+    <section class="mission-vision-sec">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <!-- Our Mission -->
+                    <div class="mission-box reveal">
+                        <div class="mission-icon">
+                            <i class="bi bi-rocket-takeoff"></i>
+                        </div>
+                        <div class="mission-content">
+                            <h4>Our Mission</h4>
+                            <p>To deliver innovative, secure, and scalable IT solutions that help businesses transform and thrive in a digital-first world.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Our Vision -->
+                    <div class="mission-box reveal">
+                        <div class="mission-icon">
+                            <i class="bi bi-eye"></i>
+                        </div>
+                        <div class="mission-content">
+                            <h4>Our Vision</h4>
+                            <p>To be a trusted global partner, recognized for driving sustainable digital transformation through technology and expertise.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 reveal">
+                    <div class="team-img-wrapper">
+                        <!-- Replace with your actual team photo -->
+                        <img src="assets/about2.png" class="img-fluid" alt="Our Team">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- CORE VALUES SECTION -->
+<!-- CORE VALUES SECTION -->
+<section class="values-strip">
+    <div class="container">
+        <span class="values-eyebrow">Our Core Values</span>
+        
+        <div class="row row-cols-1 row-cols-lg-5 g-0">
+            <div class="col reveal">
+                <div class="value-col-wrapper">
+                    <i class="bi bi-people val-icon-box"></i>
+                    <span>Customer First</span>
+                </div>
+            </div>
+            <div class="col reveal">
+                <div class="value-col-wrapper">
+                    <i class="bi bi-lightbulb val-icon-box"></i>
+                    <span>Innovation</span>
+                </div>
+            </div>
+            <div class="col reveal">
+                <div class="value-col-wrapper">
+                    <i class="bi bi-shield-lock val-icon-box"></i>
+                    <span>Integrity</span>
+                </div>
+            </div>
+            <div class="col reveal">
+                <div class="value-col-wrapper">
+                    <i class="bi bi-award val-icon-box"></i>
+                    <span>Excellence</span>
+                </div>
+            </div>
+            <div class="col reveal">
+                <div class="value-col-wrapper">
+                    <i class="bi bi-person-gear val-icon-box"></i>
+                    <span>Collaboration</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US (Advanced UI) -->
+<section class="why-choose-us">
+    <div class="ui-blob"></div>
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-7">
+                <span class="text-primary fw-bold text-uppercase small letter-spacing-2">Why InfraSwift</span>
+                <h2 class="fw-bold display-5 my-4">Experience The Future of <br><span class="text-primary">IT Managed Services</span></h2>
+                <p class="text-muted lead mb-5">We combine deep technical expertise with a customer-centric approach to deliver infrastructure that scales with your ambition.</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6 reveal">
+                        <div class="choose-grid-card">
+                            <div class="icon-box-grad"><i class="bi bi-shield-check"></i></div>
+                            <h5 class="fw-bold">Security Embedded</h5>
+                            <p class="small text-muted mb-0">Every solution we build has security integrated at the core, not as an afterthought.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 reveal">
+                        <div class="choose-grid-card">
+                            <div class="icon-box-grad"><i class="bi bi-lightning-charge"></i></div>
+                            <h5 class="fw-bold">Agile Deployment</h5>
+                            <p class="small text-muted mb-0">Fast-track your digital transformation with our streamlined deployment processes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-5 reveal">
+                <div class="premium-stats-card">
+                    <i class="bi bi-uptime fs-1 text-primary mb-4 d-block"></i>
+                    <h2 class="counter" data-target="99.9">0</h2>
+                    <p class="fw-bold text-uppercase small mb-4">SLA Backed Availability</p>
+                    <p class="small opacity-75 mb-5">We ensure your mission-critical operations remain online 24/7 with zero compromise on performance.</p>
+                    <a href="#" class="btn-theme px-4 py-2 small">Explore Our Services</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Back To Top -->
+  <button id="backToTop" title="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- ======== FOOTER ======== -->
+  <footer class="site-footer pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Brand col -->
+        <div class="col-lg-4 col-md-6">
+                    <img src="assets/logo.png" alt="InfraSwift Technologies" height="74px">
+         
+          <p style="font-size:.88rem;max-width:22rem;line-height:1.65;color:#9fb0cf;">Empowering businesses with innovative IT solutions to secure, scale and accelerate their digital future.</p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="social-ic"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-ic"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-ic"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-ic"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Solutions -->
+        <div class="col-6 col-lg-2 col-md-3">
+          <div class="f-title">Solutions</div>
+          <a class="f-link" href="#">Cloud Solutions</a>
+          <a class="f-link" href="#">Infrastructure Modernization</a>
+          <a class="f-link" href="#">Cybersecurity</a>
+          <a class="f-link" href="#">Networking Solutions</a>
+          <a class="f-link" href="#">Managed Services</a>
+          <a class="f-link" href="#">IT Consulting</a>
+        </div>
+
+        <!-- Industries -->
+        <div class="col-6 col-lg-2 col-md-3">
+          <div class="f-title">Industries</div>
+          <a class="f-link" href="#">Banking & Financial Services</a>
+          <a class="f-link" href="#">Healthcare</a>
+          <a class="f-link" href="#">Government</a>
+          <a class="f-link" href="#">Manufacturing</a>
+          <a class="f-link" href="#">Education</a>
+          <a class="f-link" href="#">Retail</a>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-6 col-lg-2 col-md-3">
+          <div class="f-title">Resources</div>
+          <a class="f-link" href="#">Blog</a>
+          <a class="f-link" href="#">Case Studies</a>
+          <a class="f-link" href="#">Whitepapers</a>
+          <a class="f-link" href="#">Webinars</a>
+          <a class="f-link" href="#">Events</a>
+        </div>
+
+        <!-- Company + Contact -->
+        <div class="col-6 col-lg-2 col-md-3">
+          <div class="f-title">Company</div>
+          <a class="f-link" href="#">About Us</a>
+          <a class="f-link" href="#">Our Team</a>
+          <a class="f-link" href="#">Careers</a>
+          <a class="f-link" href="#">Partners</a>
+          <a class="f-link" href="#">Contact Us</a>
+        </div>
+
+      </div>
+
+      <!-- Contact strip -->
+      <div class="row mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,.08);">
+        <div class="col-12">
+          <div class="f-title mb-2">Contact Us</div>
+          <div class="d-flex flex-wrap gap-3 gap-md-4">
+            <a class="f-link d-inline-flex align-items-center gap-2" href="tel:+922137131111"><i class="bi bi-telephone-fill"></i>+92 21 3713 1111</a>
+            <a class="f-link d-inline-flex align-items-center gap-2" href="mailto:info@infraswift.com"><i class="bi bi-envelope-fill"></i>info@infraswift.com</a>
+            <a class="f-link d-inline-flex align-items-center gap-2" href="#"><i class="bi bi-geo-alt-fill"></i>Suite 501, Business Avenue, Block 6, PECHS, Karachi, Pakistan</a>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border-color:rgba(255,255,255,.09);margin:1.5rem 0 1rem;">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <small style="color:#9fb0cf;">© 2024 InfraSwift Technologies (Pvt.) Ltd. All Rights Reserved.</small>
+        <div class="d-flex gap-3">
+          <a class="f-link" style="font-size:.8rem;" href="#">Privacy Policy</a>
+          <a class="f-link" style="font-size:.8rem;" href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+       $(function () {
+      // Navbar shadow
+      $(window).on('scroll', function () {
+        var s = $(this).scrollTop();
+        $('.navbar').toggleClass('scrolled', s > 30);
+        $('#backToTop').toggleClass('show', s > 400);
+      });
+
+      // Mobile nav menu toggle
+      $('#navToggle').on('click', function () {
+        $('#navMenu').toggleClass('open');
+        $(this).attr('aria-expanded', $('#navMenu').hasClass('open'));
+      });
+
+      // Mega menu tap-to-open on mobile/tablet
+      $('.mega-parent > a').on('click', function (e) {
+        if ($(window).width() <= 991) {
+          e.preventDefault();
+          $(this).parent().toggleClass('active');
+        }
+      });
+
+      // Reveal on scroll
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+      // Back to top
+      $('#backToTop').on('click', function () {
+        $('html,body').animate({ scrollTop: 0 }, 500);
+      });
+
+      // Mobile menu close on link click
+      $('#mainNav .nav-link:not(.dropdown-toggle), #mainNav .dropdown-item, .btn-expert').on('click', function () {
+        var c = document.querySelector('#mainNav');
+        if (c && c.classList.contains('show')) new bootstrap.Collapse(c).hide();
+      });
+    });
+
+     // Parallax effect on scene
+    $('.scene-container').on('mousemove', function(e) {
+        if ($(window).width() < 992) return;
+        const rect = this.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        $scene.css('transform', `translate(${x * 18}px, ${y * 14}px) rotateX(${-y * 3}deg) rotateY(${x * 4}deg)`);
+    }).on('mouseleave', function() {
+        $scene.css('transform', 'translate(0, 0) rotateX(0) rotateY(0)');
+    });
+
+    // Set initial active state
+    const initial = $('.brand-azure');  
+    if (initial.length) setActive(initial);
+
+        $(document).ready(function() {
+            // Counter Animation
+            $('.counter').each(function() {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).data('target')
+                }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function(now) {
+                        $(this).text(Math.ceil(now) + '+');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
