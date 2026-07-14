@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success Stories | InfraSwift Technologies</title>
+    <title>Resources | InfraSwift Technologies</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-              :root {
-            --is-blue: #1857d6;
+        :root {
+               --is-blue: #1857d6;
             --is-blue-dark: #0f3aa0;
             --is-navy: #0a1228;
             --is-muted: #64748b;
@@ -30,17 +30,16 @@
             --text-dark: #0f172a;
             --text-gray: #64748b;
             --soft-border: rgba(37, 153, 182, 0.15);
-            --grad: linear-gradient(135deg, #2599B6 0%, #84B971 100%);
         }
 
         body {
             font-family: 'Inter', sans-serif;
             color: #1e293b;
             overflow-x: hidden;
-            background-color: #f8fafc;
+            background-color: #fff;
         }
 
-        /* --- NAVBAR --- */
+       /* --- NAVBAR --- */
         .site-nav {
             position: sticky;
             top: 0;
@@ -219,205 +218,108 @@
             .nav-toggle { display: inline-flex; }
             .nav-cta { font-size: 0.75rem; padding: 0 16px; min-height: 40px; }
         }
-        /* --- HERO ANIMATIONS --- */
-        .hero-banner {
+
+        /* --- HERO (ORIGINAL) --- */
+        .resources-hero {
             position: relative;
-            background: linear-gradient(90deg, #060d1a 0%, rgba(6,13,26,0.8) 50%, transparent 100%), url('assets/MAinBanner.png');
-            background-size: cover;
-            background-position: center;
-            padding: 80px 0;
-            color: #fff;
-            overflow: hidden;
+            background-image: linear-gradient(90deg, rgba(6, 13, 26, 1) 0%, rgba(6, 13, 26, 0.8) 40%, rgba(6, 13, 26, 0.3) 75%, transparent 100%), url('assets/MainBanner.png');
+            background-size: cover; background-position: center right; min-height: 350px; display: flex; align-items: center; padding: 80px 0; color: #fff;
         }
-        .hero-content h1 { 
-            font-size: 3rem; font-weight: 800; 
-            animation: slideRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 15px; }
+        .hero-content p { font-size: 1.15rem; color: rgba(255, 255, 255, 0.85); max-width: 550px; }
+        .breadcrumb-nav { font-size: 0.85rem; font-weight: 700; margin-bottom: 25px; color: rgba(255, 255, 255, 0.7); text-transform: uppercase; }
+        .breadcrumb-nav a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+
+        /* --- UPDATED CENTER SECTION (REFINED CARDS) --- */
+        .resources-section { padding: 60px 0 100px; background-color: #fff; }
+
+        /* Filter Tabs */
+        .res-filters { 
+            display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; 
+            margin-bottom: 50px; justify-content: flex-start;
         }
-        .hero-content p { 
-            animation: slideRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
-            animation-delay: 0.2s; opacity: 0;
+        .filter-item { 
+            padding: 8px 24px; font-size: 0.9rem; font-weight: 600; 
+            color: #64748b; cursor: pointer; border-radius: 50px; 
+            transition: 0.3s; border: 1px solid transparent;
         }
+        .filter-item.active { background: var(--is-blue); color: #fff; }
 
-        @keyframes slideRight {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
+        /* Resource Cards (Refined) */
+        .res-card {
+            background: #fff; border-radius: 16px; overflow: hidden; height: 100%; 
+            display: flex; flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
-        /* --- RESOURCES HERO BANNER --- */
-.resources-hero {
-    position: relative;
-    /* Dark Gradient overlay taake white text clear nazar aaye */
-    background-image: linear-gradient(90deg, 
-        rgba(6, 13, 26, 1) 0%, 
-        rgba(6, 13, 26, 0.8) 40%, 
-        rgba(6, 13, 26, 0.3) 75%, 
-        transparent 100%), 
-        url('assets/MainBanner.png');
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
-    min-height: 350px;
-    display: flex;
-    align-items: center;
-    padding: 80px 0;
-    color: #fff;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    letter-spacing: -1px;
-}
-
-.hero-content p {
-    font-size: 1.15rem;
-    color: rgba(255, 255, 255, 0.85);
-    max-width: 550px;
-    line-height: 1.6;
-}
-
-.breadcrumb-nav {
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 25px;
-    color: rgba(255, 255, 255, 0.7);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.breadcrumb-nav a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.breadcrumb-nav a:hover {
-    color: #fff;
-}
-
-.breadcrumb-nav span {
-    color: var(--primary); /* Resources word in theme color */
-}
-
-@media (max-width: 767px) {
-    .resources-hero { text-align: center; min-height: 300px; padding: 60px 0; }
-    .hero-content h1 { font-size: 2.5rem; }
-    .hero-content p { margin: 0 auto; font-size: 1rem; }
-}
-
-        /* --- RESOURCES PAGE UI --- */
-.resources-section { padding: 60px 0 100px; background-color: #fff; }
-
-.res-header h1 { font-size: 3rem; font-weight: 800; color: var(--text-dark); margin-bottom: 15px; }
-.res-header p { color: var(--text-gray); font-size: 1.05rem; margin-bottom: 40px; }
-
-/* Filter Tabs */
-.res-filters { 
-    display: flex; gap: 25px; list-style: none; padding: 0; 
-    margin-bottom: 50px; border-bottom: 1px solid #f1f5f9; 
-}
-.filter-item { 
-    padding: 10px 0; font-size: 0.9rem; font-weight: 700; 
-    color: var(--text-gray); cursor: pointer; position: relative; transition: 0.3s;
-}
-.filter-item:hover { color: var(--primary); }
-.filter-item.active { color: var(--primary); }
-.filter-item.active::after { 
-    content: ''; position: absolute; bottom: -1px; left: 0; 
-    width: 100%; height: 2px; background: var(--primary); 
-}
-
-/* Resource Cards */
-.res-card {
-    background: #fff; border: 1px solid #f1f5f9; border-radius: 20px;
-    overflow: hidden; height: 100%; transition: all 0.4s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-}
-.res-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--soft-border); }
-
-.res-img-wrap { width: 100%; height: 220px; overflow: hidden; }
-.res-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-.res-card:hover .res-img-wrap img { transform: scale(1.1); }
-
-.res-content { padding: 30px; }
-.res-tag { 
-    font-size: 0.7rem; font-weight: 800; text-transform: uppercase; 
-    color: var(--is-blue); letter-spacing: 1px; display: block; margin-bottom: 12px; 
-}
-.res-card h5 { font-weight: 800; font-size: 1.2rem; color: var(--text-dark); margin-bottom: 15px; line-height: 1.4; }
-.res-card p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; }
-
-.res-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f8fafc; padding-top: 20px; }
-.res-date { font-size: 0.8rem; color: #94a3b8; font-weight: 600; }
-.res-link { color: var(--is-blue); font-weight: 700; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; }
-.res-link:hover { gap: 10px; }
-
-/* Newsletter Banner (Exact Match) */
-.newsletter-banner {
-    background: linear-gradient(135deg, #1857d6 0%, #0a1228 100%);
-    border-radius: 20px; padding: 50px; color: #fff; margin-top: 80px;
-    display: flex; align-items: center; justify-content: space-between; gap: 30px;
-}
-.news-text h3 { font-weight: 800; margin-bottom: 10px; }
-.news-text p { opacity: 0.8; margin: 0; font-size: 0.95rem; }
-
-.news-form { display: flex; gap: 12px; width: 450px; max-width: 100%; }
-.news-form input { 
-    flex: 1; padding: 12px 20px; border-radius: 8px; border: none; 
-    font-size: 0.9rem; font-weight: 500; 
-}
-.btn-subscribe { 
-    background: var(--primary); color: #fff; border: none; 
-    padding: 0 25px; border-radius: 8px; font-weight: 700; transition: 0.3s;
-}
-.btn-subscribe:hover { background: #fff; color: var(--primary); }
-
-@media (max-width: 991px) {
-    .newsletter-banner { flex-direction: column; text-align: center; padding: 40px 25px; }
-    .news-form { width: 100%; }
-}
-
-        /* ===== FOOTER ===== */
-        footer.site-footer { background: var(--is-navy); color: #b9c4d8; }
-        .f-brand-logo { width: 42px; height: 42px; border-radius: 9px; overflow: hidden; }
-        .f-brand-logo img { width: 100%; height: 100%; object-fit: contain; }
-        footer .brand-name { font-size: 1rem; }
-        footer .f-title { color: #fff; font-weight: 700; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; margin-bottom: .9rem; }
-        footer a.f-link { color: #9fb0cf; font-size: .86rem; display: block; padding: .26rem 0; transition: color .2s; text-decoration: none; }
-        footer a.f-link:hover { color: #fff; }
-        .social-ic { width: 34px; height: 34px; border-radius: 8px; background: rgba(255, 255, 255, .08); display: grid; place-items: center; color: #cdd8ea; transition: all .25s; }
-        .social-ic:hover { background: var(--is-blue); color: #fff; }
-
-        /* ===== ANIMATIONS ===== */
-        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1); }
-        .reveal.in { opacity: 1; transform: none; }
-
-        /* ===== BACK TO TOP ===== */
-        #backToTop {
-            position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
-            width: 44px; height: 44px; border-radius: 50%;
-            background: var(--is-blue); color: #fff;
-            display: grid; place-items: center; font-size: 1.1rem;
-            box-shadow: 0 4px 16px rgba(24, 87, 214, .35);
-            opacity: 0; pointer-events: none;
-            transition: opacity .3s, transform .3s;
-            transform: translateY(10px);
-            border: none; cursor: pointer;
+        .res-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(24, 87, 214, 0.1);
         }
 
-        #backToTop.show { opacity: 1; pointer-events: all; transform: translateY(0); }
-        #backToTop:hover { background: var(--is-blue-dark); }
+        .res-img-wrap { width: 100%; height: 210px; overflow: hidden; position: relative; }
+        .res-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .res-card:hover .res-img-wrap img { transform: scale(1.08); }
 
-        @media (prefers-reduced-motion: reduce) {
-            * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+        .res-content { padding: 28px; flex-grow: 1; display: flex; flex-direction: column; }
+        .res-tag { 
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; 
+            color: var(--is-blue); margin-bottom: 12px; display: block; letter-spacing: 0.5px;
         }
+        .res-card h5 { 
+            font-weight: 700; font-size: 1.25rem; color: #0f172a; 
+            margin-bottom: 14px; line-height: 1.4; min-height: 3.5rem;
+        }
+        .res-card p { color: #64748b; font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+
+        .res-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid #f8fafc; }
+        .res-date { font-size: 0.85rem; color: #94a3b8; font-weight: 500; }
+        .res-link { 
+            color: var(--is-blue); font-weight: 700; text-decoration: none; 
+            font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: 0.2s;
+        }
+        .res-link:hover { gap: 10px; color: var(--is-blue-dark); }
+
+        /* Newsletter Banner */
+        .newsletter-banner {
+            background: linear-gradient(135deg, #1857d6 0%, #0a1228 100%);
+            border-radius: 16px; padding: 45px 60px; color: #fff; margin-top: 80px;
+            display: flex; align-items: center; justify-content: space-between; gap: 40px;
+        }
+        .news-text h3 { font-weight: 800; margin-bottom: 8px; font-size: 1.75rem; }
+        .news-text p { opacity: 0.85; margin: 0; font-size: 1rem; }
+        .news-form { display: flex; gap: 12px; flex: 1; max-width: 550px; }
+        .news-form input { flex: 1; padding: 14px 20px; border-radius: 8px; border: none; font-size: 0.95rem; }
+        .btn-subscribe { background:transparent; color: #fff; border: 1px solid #fff; padding: 0 30px; border-radius: 8px; font-weight: 800; transition: 0.3s; }
+        .btn-subscribe:hover { background: #0a1228; color: #fff; transform: translateY(-2px); }
+
+        @media (max-width: 991px) {
+            .newsletter-banner { flex-direction: column; text-align: center; padding: 40px 30px; }
+            .news-form { width: 100%; }
+            .res-card h5 { min-height: auto; }
+        }
+
+        /* --- FOOTER (ORIGINAL) --- */
+        .site-footer { background: #0a1228; color: #fff; padding-top: 60px; padding-bottom: 40px; }
+        .f-title { font-weight: 800; margin-bottom: 20px; color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .f-link { display: block; color: #9fb0cf; text-decoration: none; margin-bottom: 12px; font-size: 0.9rem; transition: 0.3s; }
+        .f-link:hover { color: #fff; padding-left: 5px; }
+        .social-ic { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: 0.3s; }
+        .social-ic:hover { background: var(--is-blue); transform: translateY(-3px); }
+
+        #backToTop { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; border-radius: 50%; background: var(--is-blue); color: #fff; border: none; display: none; align-items: center; justify-content: center; z-index: 100; transition: 0.3s; }
+        #backToTop.show { display: flex; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 
 <body>
 
+    
    <!-- ======== NAVBAR ======== -->
-    <nav class="site-nav" id="siteNav">
+<nav class="site-nav" id="siteNav">
         <div class="container nav-shell">
             <a class="brand-logo" href="index.html">
                 <img src="assets/Infraswift-01.png" alt="InfraSwift Technologies">
@@ -488,127 +390,146 @@
         </div>
     </nav>
 
-    <!-- HERO -->
-   <!-- RESOURCES HERO -->
-<section class="resources-hero">
-    <div class="container">
-        <div class="hero-content reveal">
-            <!-- Breadcrumb -->
-            <nav class="breadcrumb-nav">
-                <a href="index.html">Home</a> 
-                <i class="bi bi-chevron-right mx-2" style="font-size: 10px;"></i> 
-                <span>Resources</span>
-            </nav>
-            
-            <!-- Content -->
-            <h1>Resources</h1>
-            <p>Insights, guides, and updates to help you stay ahead in the ever-evolving world of technology.</p>
+    <!-- HERO (ORIGINAL) -->
+    <section class="resources-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="breadcrumb-nav"><a href="index.html">Home</a> <i class="bi bi-chevron-right mx-1" style="font-size: 10px;"></i> <span>Resources</span></div>
+                <h1>Resources</h1>
+                <p>Insights, guides, and updates to help you stay ahead in the ever-evolving world of technology.</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <!-- UPDATED RESOURCES GRID -->
     <main class="resources-section">
-    <div class="container">
-        
-      
-
-        <!-- Filter Tabs -->
-        <ul class="res-filters">
-            <li class="filter-item active" data-cat="all">All</li>
-            <li class="filter-item" data-cat="blog">Blog</li>
-            <li class="filter-item" data-cat="case-study">Case Studies</li>
-            <li class="filter-item" data-cat="whitepaper">Whitepapers</li>
-            <li class="filter-item" data-cat="webinar">Webinars</li>
-        </ul>
-
-        <!-- Grid -->
-        <div class="row g-4" id="resourceGrid">
+        <div class="container">
             
-            <!-- Card 1 -->
-            <div class="col-md-4 res-item blog">
-                <div class="res-card">
-                    <div class="res-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800" alt="Blog">
+            <!-- Filter Tabs -->
+            <ul class="res-filters reveal">
+                <li class="filter-item active" data-cat="all">All</li>
+                <li class="filter-item" data-cat="blog">Blog</li>
+                <li class="filter-item" data-cat="case-study">Case Studies</li>
+                <li class="filter-item" data-cat="whitepaper">Whitepapers</li>
+                <li class="filter-item" data-cat="webinar">Webinars</li>
+                <li class="filter-item" data-cat="events">Events</li>
+            </ul>
+
+            <!-- Resource Grid -->
+            <div class="row g-4" id="resourceGrid">
+                <!-- Card 1 -->
+                <div class="col-lg-4 col-md-6 res-item blog reveal">
+                    <div class="res-card">
+                        <div class="res-img-wrap"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800" alt="Blog"></div>
+                        <div class="res-content">
+                            <span class="res-tag">Blog</span>
+                            <h5>Top 5 Cloud Security Best Practices</h5>
+                            <p>Learn the key strategies to secure your cloud infrastructure from modern cyber threats.</p>
+                            <div class="res-footer">
+                                <span class="res-date">May 20, 2024</span>
+                                <a href="#" class="res-link">Read More <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="res-content">
-                        <span class="res-tag">Blog</span>
-                        <h5>Top 5 Cloud Security Best Practices</h5>
-                        <p>Learn the key strategies to secure your cloud infrastructure from modern cyber threats.</p>
-                        <div class="res-footer">
-                            <span class="res-date">May 20, 2024</span>
-                            <a href="#" class="res-link">Read More <i class="bi bi-arrow-right"></i></a>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-lg-4 col-md-6 res-item whitepaper reveal">
+                    <div class="res-card">
+                        <div class="res-img-wrap"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800" alt="Whitepaper"></div>
+                        <div class="res-content">
+                            <span class="res-tag">Whitepaper</span>
+                            <h5>The Ultimate Guide to Infrastructure Modernization</h5>
+                            <p>A comprehensive guide to modernizing your IT infrastructure for the digital era.</p>
+                            <div class="res-footer">
+                                <span class="res-date">May 15, 2024</span>
+                                <a href="#" class="res-link">Read More <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-lg-4 col-md-6 res-item case-study reveal">
+                    <div class="res-card">
+                        <div class="res-img-wrap"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800" alt="Case Study"></div>
+                        <div class="res-content">
+                            <span class="res-tag">Case Study</span>
+                            <h5>How We Reduced IT Costs by 45% for a Retail Client</h5>
+                            <p>A case study on optimizing IT operations and reducing unnecessary overhead costs.</p>
+                            <div class="res-footer">
+                                <span class="res-date">May 10, 2024</span>
+                                <a href="#" class="res-link">Read More <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-lg-4 col-md-6 res-item webinar reveal">
+                    <div class="res-card">
+                        <div class="res-img-wrap"><img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800" alt="Webinar"></div>
+                        <div class="res-content">
+                            <span class="res-tag">Webinar</span>
+                            <h5>Cloud Migration: What You Need to Know</h5>
+                            <p>Best practices for a successful cloud migration and hybrid cloud management.</p>
+                            <div class="res-footer">
+                                <span class="res-date">May 5, 2024</span>
+                                <a href="#" class="res-link">Read More <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-lg-4 col-md-6 res-item blog reveal">
+                    <div class="res-card">
+                        <div class="res-img-wrap"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800" alt="Blog"></div>
+                        <div class="res-content">
+                            <span class="res-tag">Blog</span>
+                            <h5>Cybersecurity Trends to Watch in 2024</h5>
+                            <p>Key trends shaping the future of cybersecurity and AI-driven threat detection.</p>
+                            <div class="res-footer">
+                                <span class="res-date">Apr 28, 2024</span>
+                                <a href="#" class="res-link">Read More <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="col-lg-4 col-md-6 res-item whitepaper reveal">
+                    <div class="res-card">
+                        <div class="res-img-wrap"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800" alt="Whitepaper"></div>
+                        <div class="res-content">
+                            <span class="res-tag">Whitepaper</span>
+                            <h5>Disaster Recovery Planning Checklist</h5>
+                            <p>Ensure your business is prepared for any disaster with our comprehensive checklist.</p>
+                            <div class="res-footer">
+                                <span class="res-date">Apr 20, 2024</span>
+                                <a href="#" class="res-link">Read More <i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="col-md-4 res-item whitepaper">
-                <div class="res-card">
-                    <div class="res-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800" alt="Whitepaper">
-                    </div>
-                    <div class="res-content">
-                        <span class="res-tag">Whitepaper</span>
-                        <h5>The Ultimate Guide to Infrastructure Modernization</h5>
-                        <p>A comprehensive guide to modernizing your IT infrastructure for the digital era.</p>
-                        <div class="res-footer">
-                            <span class="res-date">May 15, 2024</span>
-                            <a href="#" class="res-link">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
+            <!-- NEWSLETTER -->
+            <div class="newsletter-banner reveal">
+                <div class="news-text">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Get the latest insights and updates delivered to your inbox.</p>
                 </div>
+                <form class="news-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn-subscribe">Subscribe</button>
+                </form>
             </div>
-
-            <!-- Card 3 -->
-            <div class="col-md-4 res-item case-study">
-                <div class="res-card">
-                    <div class="res-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800" alt="Case Study">
-                    </div>
-                    <div class="res-content">
-                        <span class="res-tag">Case Study</span>
-                        <h5>How We Reduced IT Costs by 45% for a Retail Client</h5>
-                        <p>A case study on optimizing IT operations and reducing unnecessary overhead costs.</p>
-                        <div class="res-footer">
-                            <span class="res-date">May 10, 2024</span>
-                            <a href="#" class="res-link">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
+    </main>
 
-        <!-- Newsletter Banner -->
-        <div class="newsletter-banner reveal">
-            <div class="news-text">
-                <h3>Subscribe to Our Newsletter</h3>
-                <p>Get the latest insights and updates delivered to your inbox.</p>
-            </div>
-            <form class="news-form">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit" class="btn-subscribe">Subscribe</button>
-            </form>
-        </div>
-
-    </div>
-</main> 
-
- <!-- Back To Top -->
-    <button id="backToTop" title="Back to top"><i class="bi bi-arrow-up"></i></button>
-
-    <!-- ======== FOOTER ======== -->
-    <footer class="site-footer pt-5 pb-4">
+    <!-- FOOTER (ORIGINAL) -->
+    <footer class="site-footer">
         <div class="container">
             <div class="row g-4">
-
-                <!-- Brand col -->
                 <div class="col-lg-4 col-md-6">
-                    <img src="assets/logo.png" alt="InfraSwift Technologies" height="74px">
-
-                    <p style="font-size:.88rem;max-width:22rem;line-height:1.65;color:#9fb0cf;">Empowering businesses
-                        with innovative IT solutions to secure, scale and accelerate their digital future.</p>
+                    <img src="assets/Infraswift-01.png" alt="InfraSwift Technologies" height="74px" class="mb-4">
+                    <p style="font-size:.88rem;max-width:22rem;line-height:1.65;color:#9fb0cf;">Empowering businesses with innovative IT solutions to secure, scale and accelerate their digital future.</p>
                     <div class="d-flex gap-2 mt-3">
                         <a href="#" class="social-ic"><i class="bi bi-linkedin"></i></a>
                         <a href="#" class="social-ic"><i class="bi bi-facebook"></i></a>
@@ -616,68 +537,36 @@
                         <a href="#" class="social-ic"><i class="bi bi-youtube"></i></a>
                     </div>
                 </div>
-
-                <!-- Solutions -->
                 <div class="col-6 col-lg-2 col-md-3">
                     <div class="f-title">Solutions</div>
                     <a class="f-link" href="#">Cloud Solutions</a>
-                    <a class="f-link" href="#">Infrastructure Modernization</a>
+                    <a class="f-link" href="#">Infrastructure</a>
                     <a class="f-link" href="#">Cybersecurity</a>
-                    <a class="f-link" href="#">Networking Solutions</a>
                     <a class="f-link" href="#">Managed Services</a>
-                    <a class="f-link" href="#">IT Consulting</a>
                 </div>
-
-                <!-- Industries -->
                 <div class="col-6 col-lg-2 col-md-3">
                     <div class="f-title">Industries</div>
-                    <a class="f-link" href="#">Banking & Financial Services</a>
+                    <a class="f-link" href="#">Banking</a>
                     <a class="f-link" href="#">Healthcare</a>
                     <a class="f-link" href="#">Government</a>
-                    <a class="f-link" href="#">Manufacturing</a>
-                    <a class="f-link" href="#">Education</a>
                     <a class="f-link" href="#">Retail</a>
                 </div>
-
-                <!-- Resources -->
                 <div class="col-6 col-lg-2 col-md-3">
                     <div class="f-title">Resources</div>
                     <a class="f-link" href="#">Blog</a>
                     <a class="f-link" href="#">Case Studies</a>
                     <a class="f-link" href="#">Whitepapers</a>
                     <a class="f-link" href="#">Webinars</a>
-                    <a class="f-link" href="#">Events</a>
                 </div>
-
-                <!-- Company + Contact -->
                 <div class="col-6 col-lg-2 col-md-3">
                     <div class="f-title">Company</div>
                     <a class="f-link" href="#">About Us</a>
                     <a class="f-link" href="#">Our Team</a>
                     <a class="f-link" href="#">Careers</a>
-                    <a class="f-link" href="#">Partners</a>
                     <a class="f-link" href="#">Contact Us</a>
                 </div>
-
             </div>
-
-            <!-- Contact strip -->
-            <div class="row mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,.08);">
-                <div class="col-12">
-                    <div class="f-title mb-2">Contact Us</div>
-                    <div class="d-flex flex-wrap gap-3 gap-md-4">
-                        <a class="f-link d-inline-flex align-items-center gap-2" href="tel:+922137131111"><i
-                                class="bi bi-telephone-fill"></i>+92 21 3713 1111</a>
-                        <a class="f-link d-inline-flex align-items-center gap-2" href="mailto:info@infraswift.com"><i
-                                class="bi bi-envelope-fill"></i>info@infraswift.com</a>
-                        <a class="f-link d-inline-flex align-items-center gap-2" href="#"><i
-                                class="bi bi-geo-alt-fill"></i>Suite 501, Business Avenue, Block 6, PECHS, Karachi,
-                            Pakistan</a>
-                    </div>
-                </div>
-            </div>
-
-            <hr style="border-color:rgba(255,255,255,.09);margin:1.5rem 0 1rem;">
+            <hr style="border-color:rgba(255,255,255,.09);margin:2.5rem 0 1.5rem;">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
                 <small style="color:#9fb0cf;">© 2024 InfraSwift Technologies (Pvt.) Ltd. All Rights Reserved.</small>
                 <div class="d-flex gap-3">
@@ -688,32 +577,19 @@
         </div>
     </footer>
 
-<!-- UPDATED JQUERY SCRIPT -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
-   $(function() {
-            // Navbar shadow
+    <button id="backToTop"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
             $(window).on('scroll', function() {
                 var s = $(this).scrollTop();
-                $('.navbar').toggleClass('scrolled', s > 30);
                 $('#backToTop').toggleClass('show', s > 400);
             });
-
-            // Mobile nav menu toggle
             $('#navToggle').on('click', function() {
                 $('#navMenu').toggleClass('open');
-                $(this).attr('aria-expanded', $('#navMenu').hasClass('open'));
             });
-
-            // Mega menu tap-to-open on mobile/tablet
-            $('.mega-parent > a').on('click', function(e) {
-                if ($(window).width() <= 991) {
-                    e.preventDefault();
-                    $(this).parent().toggleClass('active');
-                }
-            });
-
-            // Reveal on scroll
             const io = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
                     if (e.isIntersecting) {
@@ -723,45 +599,21 @@
                 });
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-            // Back to top
             $('#backToTop').on('click', function() {
                 $('html,body').animate({ scrollTop: 0 }, 500);
             });
-
-            // Mobile menu close on link click
-            $('#mainNav .nav-link:not(.dropdown-toggle), #mainNav .dropdown-item, .btn-expert').on('click',
-                function() {
-                    var c = document.querySelector('#mainNav');
-                    if (c && c.classList.contains('show')) new bootstrap.Collapse(c).hide();
-                });
+            $('.filter-item').on('click', function() {
+                $('.filter-item').removeClass('active');
+                $(this).addClass('active');
+                var cat = $(this).data('cat');
+                if(cat === 'all') {
+                    $('.res-item').fadeIn(400);
+                } else {
+                    $('.res-item').hide();
+                    $('.' + cat).fadeIn(400);
+                }
+            });
         });
-    
-  
-        $(document).ready(function() {
-    // Filter Functionality
-    $('.filter-item').on('click', function() {
-        // Active class update
-        $('.filter-item').removeClass('active');
-        $(this).addClass('active');
-
-        var category = $(this).data('cat');
-
-        if(category === 'all') {
-            $('.res-item').fadeIn(400);
-        } else {
-            $('.res-item').hide();
-            $('.' + category).fadeIn(400);
-        }
-    });
-
-    // Simple Newsletter Alert
-    $('.news-form').on('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for subscribing!');
-        $(this).find('input').val('');
-    });
-});
-</script>
+    </script>
 </body>
 </html>

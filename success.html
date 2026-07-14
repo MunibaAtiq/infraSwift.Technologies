@@ -244,7 +244,7 @@
         }
 
         /* --- STORY CARDS & HOVER EFFECTS --- */
-        .story-container { padding: 80px 0; }
+        .story-container { padding: 30px 0; }
         
         .story-card {
             background: #fff;
@@ -309,16 +309,6 @@
         .read-more-link:hover { color: var(--is-navy); }
         .read-more-link:hover i { transform: translateX(8px); }
 
-        /* --- PAGINATION HOVER --- */
-        .pagination-wrap { display: flex; justify-content: center; gap: 15px; margin-top: 60px; }
-        .p-node {
-            width: 45px; height: 45px; border-radius: 12px; background: #fff; border: 1px solid #e2e8f0;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; cursor: pointer; transition: 0.4s;
-        }
-        .p-node.active { background: var(--grad); color: #fff; border-color: transparent; transform: scale(1.1); box-shadow: 0 10px 20px rgba(37, 153, 182, 0.2); }
-        .p-node:hover:not(.active) { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
-
         @media (max-width: 991px) {
             .story-content { padding: 40px 30px; }
             .story-stats { gap: 20px; flex-wrap: wrap; }
@@ -354,6 +344,166 @@
 
         #backToTop.show { opacity: 1; pointer-events: all; transform: translateY(0); }
         #backToTop:hover { background: var(--is-blue-dark); }
+
+        /* ===== MORE SUCCESS STORIES ===== */
+        .more-stories-section { padding: 0 0 25px; background-color: #f8fafc; }
+        .more-stories-heading {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 18px;
+        }
+
+        .ms-card {
+            background: #fff;
+            border: 1px solid #eef1f6;
+            border-radius: 14px;
+            padding: 18px 18px;
+            height: 100%;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+        }
+
+        .ms-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 36px rgba(15, 23, 42, 0.08);
+            border-color: var(--primary);
+        }
+
+        .ms-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .ms-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .ms-card:hover .ms-icon {
+            transform: rotate(-6deg) scale(1.08);
+        }
+
+        .ms-icon.navy { background: rgba(10, 18, 40, 0.08); color: var(--is-navy); }
+        .ms-icon.green { background: rgba(43, 182, 115, 0.12); color: #2bb673; }
+        .ms-icon.blue { background: rgba(37, 153, 182, 0.12); color: var(--primary); }
+        .ms-icon.orange { background: rgba(230, 126, 34, 0.12); color: #e67e22; }
+
+        .ms-title-wrap { min-width: 0; }
+
+        .ms-title {
+            font-size: 0.86rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .ms-category {
+            font-size: 0.74rem;
+            color: var(--text-gray);
+            line-height: 1.3;
+        }
+
+        .ms-stat {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--is-blue);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .ms-stat-label {
+            font-size: 0.76rem;
+            color: var(--text-gray);
+            line-height: 1.35;
+            margin-bottom: 14px;
+        }
+
+        .ms-readmore {
+            color: var(--is-blue);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .ms-readmore i { transition: transform 0.3s ease; font-size: 0.8rem; }
+        .ms-readmore:hover { color: var(--is-navy); }
+        .ms-readmore:hover i { transform: translateX(6px); }
+
+        /* Simple pill pagination — matches reference image */
+        .ms-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .ms-page {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .ms-page:hover:not(.active) { color: var(--is-blue); }
+
+        .ms-page.active {
+            background: var(--is-blue);
+            color: #fff;
+            box-shadow: 0 8px 18px rgba(24, 87, 214, 0.28);
+        }
+
+        .ms-ellipsis {
+            color: var(--text-gray);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .ms-next {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+        }
+
+        .ms-next i { transition: transform 0.3s ease; font-size: 0.85rem; }
+        .ms-next:hover { color: var(--is-blue); }
+        .ms-next:hover i { transform: translateX(4px); }
+
+        @media (max-width: 575px) {
+            .ms-pagination { gap: 14px; }
+        }
 
         @media (prefers-reduced-motion: reduce) {
             * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
@@ -496,105 +646,216 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 2 ================= -->
-        <div class="story-group" id="page2" style="display:none;">
-            <!-- Story 3 -->
-            <div class="story-card">
-                <div class="row g-0 align-items-stretch">
-                    <div class="col-lg-5">
-                        <div class="story-img-wrap"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000" alt="Security"></div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="story-content">
-                            <span class="cat-badge" style="color: #e53e3e; background: rgba(229, 62, 62, 0.1);">Cybersecurity</span>
-                            <h2 class="story-title">SOC & Security Overhaul</h2>
-                            <p class="story-desc">Implemented a 24/7 Managed SOC for a government agency to mitigate zero-day vulnerabilities.</p>
-                            <div class="story-stats">
-                                <div class="stat-node"><h4>80%</h4><p>Threat Reduc.</p></div>
-                                <div class="stat-node"><h4>24/7</h4><p>Monitoring</p></div>
-                                <div class="stat-node"><h4>100%</h4><p>Compliant</p></div>
+    </div>
+</section>
+
+<!-- MORE SUCCESS STORIES -->
+<section class="more-stories-section">
+    <div class="container">
+        <h3 class="more-stories-heading">More Success Stories</h3>
+
+        <!-- MS PAGE 1 -->
+        <div class="ms-page-group" id="msPage1">
+            <div class="row g-3">
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon navy"><i class="bi bi-hdd-stack"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Data Center Modernization</div>
+                                <div class="ms-category">Infrastructure</div>
                             </div>
-                            <a href="#" class="read-more-link">Read Case Study <i class="bi bi-arrow-right"></i></a>
                         </div>
+                        <div class="ms-stat">50%</div>
+                        <div class="ms-stat-label">Improved<br>Performance</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Story 4 -->
-            <div class="story-card">
-                <div class="row g-0 flex-lg-row-reverse align-items-stretch">
-                    <div class="col-lg-5">
-                        <div class="story-img-wrap"><img src="https://www.merge.com.au/wp-content/uploads/2020/12/sd-wan-for-office-365.png" alt="Networking"></div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="story-content">
-                            <span class="cat-badge" style="color: #805ad5; background: rgba(128, 90, 213, 0.1);">Networking</span>
-                            <h2 class="story-title">Global SD-WAN Deployment</h2>
-                            <p class="story-desc">Connecting 25+ global locations with a secure, software-defined wide area network for seamless collaboration.</p>
-                            <div class="story-stats">
-                                <div class="stat-node"><h4>40%</h4><p>Latency Dec.</p></div>
-                                <div class="stat-node"><h4>55%</h4><p>Bandwidth Up</p></div>
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon green"><i class="bi bi-shield-lock"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Zero Trust Security</div>
+                                <div class="ms-category">Cybersecurity</div>
                             </div>
-                            <a href="#" class="read-more-link">Read Case Study <i class="bi bi-arrow-right"></i></a>
                         </div>
+                        <div class="ms-stat">80%</div>
+                        <div class="ms-stat-label">Threat<br>Reduction</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- ================= PAGE 3 ================= -->
-        <div class="story-group" id="page3" style="display:none;">
-            <!-- Story 5 -->
-            <div class="story-card">
-                <div class="row g-0 align-items-stretch">
-                    <div class="col-lg-5">
-                        <div class="story-img-wrap"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1000" alt="Healthcare"></div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="story-content">
-                            <span class="cat-badge" style="color: #3182ce; background: rgba(49, 130, 206, 0.1);">Managed Services</span>
-                            <h2 class="story-title">IT Support for Healthcare</h2>
-                            <p class="story-desc">Delivering 100% HIPAA compliant managed IT services for a leading hospital network.</p>
-                            <div class="story-stats">
-                                <div class="stat-node"><h4>99.99%</h4><p>Uptime</p></div>
-                                <div class="stat-node"><h4>15 Min</h4><p>Response</p></div>
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon blue"><i class="bi bi-cloud-arrow-up"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Cloud Migration</div>
+                                <div class="ms-category">Cloud Solutions</div>
                             </div>
-                            <a href="#" class="read-more-link">Read Case Study <i class="bi bi-arrow-right"></i></a>
                         </div>
+                        <div class="ms-stat">70%</div>
+                        <div class="ms-stat-label">Cost<br>Savings</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Story 6 -->
-            <div class="story-card">
-                <div class="row g-0 flex-lg-row-reverse align-items-stretch">
-                    <div class="col-lg-5">
-                        <div class="story-img-wrap"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000" alt="VDI"></div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="story-content">
-                            <span class="cat-badge" style="color: #dd6b20; background: rgba(221, 107, 32, 0.1);">Virtualization</span>
-                            <h2 class="story-title">Remote Desktop (VDI) Setup</h2>
-                            <p class="story-desc">Enabling secure work-from-home capabilities for 2,000+ staff members with high-performance VDI.</p>
-                            <div class="story-stats">
-                                <div class="stat-node"><h4>2000+</h4><p>Users</p></div>
-                                <div class="stat-node"><h4>Secure</h4><p>Access</p></div>
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon orange"><i class="bi bi-clipboard-check"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">IT Infrastructure Audit</div>
+                                <div class="ms-category">IT Consulting</div>
                             </div>
-                            <a href="#" class="read-more-link">Read Case Study <i class="bi bi-arrow-right"></i></a>
                         </div>
+                        <div class="ms-stat">99.9%</div>
+                        <div class="ms-stat-label">Uptime<br>Achieved</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PAGINATION NODES -->
-        <div class="pagination-wrap">
-            <div class="p-node active" data-target="page1">1</div>
-            <div class="p-node" data-target="page2">2</div>
-            <div class="p-node" data-target="page3">3</div>
-            <div class="p-node next-btn px-5">Next <i class="bi bi-chevron-right ms-1"></i></div>
+        <!-- MS PAGE 2 -->
+        <div class="ms-page-group" id="msPage2" style="display:none;">
+            <div class="row g-3">
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon blue"><i class="bi bi-diagram-3"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Global SD-WAN Deployment</div>
+                                <div class="ms-category">Networking</div>
+                            </div>
+                        </div>
+                        <div class="ms-stat">40%</div>
+                        <div class="ms-stat-label">Latency<br>Reduced</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon green"><i class="bi bi-headset"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Managed IT Support</div>
+                                <div class="ms-category">Managed Services</div>
+                            </div>
+                        </div>
+                        <div class="ms-stat">24/7</div>
+                        <div class="ms-stat-label">Monitoring<br>Coverage</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon orange"><i class="bi bi-display"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Virtual Desktop Infrastructure</div>
+                                <div class="ms-category">Virtualization</div>
+                            </div>
+                        </div>
+                        <div class="ms-stat">2000+</div>
+                        <div class="ms-stat-label">Users<br>Enabled</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon navy"><i class="bi bi-arrow-repeat"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Disaster Recovery Planning</div>
+                                <div class="ms-category">Business Continuity</div>
+                            </div>
+                        </div>
+                        <div class="ms-stat">15min</div>
+                        <div class="ms-stat-label">Recovery<br>Time</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- MS PAGE 3 -->
+        <div class="ms-page-group" id="msPage3" style="display:none;">
+            <div class="row g-3">
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon green"><i class="bi bi-shield-check"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Network Security Upgrade</div>
+                                <div class="ms-category">Cybersecurity</div>
+                            </div>
+                        </div>
+                        <div class="ms-stat">90%</div>
+                        <div class="ms-stat-label">Risk<br>Reduction</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon navy"><i class="bi bi-server"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Server Virtualization</div>
+                                <div class="ms-category">Infrastructure</div>
+                            </div>
+                        </div>
+                        <div class="ms-stat">65%</div>
+                        <div class="ms-stat-label">Cost<br>Efficiency</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon blue"><i class="bi bi-laptop"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">Endpoint Protection Rollout</div>
+                                <div class="ms-category">Cybersecurity</div>
+                            </div>
+                        </div>
+                        <div class="ms-stat">100%</div>
+                        <div class="ms-stat-label">Devices<br>Secured</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="ms-card">
+                        <div class="ms-header">
+                            <div class="ms-icon orange"><i class="bi bi-chat-dots"></i></div>
+                            <div class="ms-title-wrap">
+                                <div class="ms-title">IT Helpdesk Modernization</div>
+                                <div class="ms-category">Managed Services</div>
+                            </div>
+                        </div>
+                        <div class="ms-stat">95%</div>
+                        <div class="ms-stat-label">CSAT<br>Score</div>
+                        <a href="#" class="ms-readmore">Read More <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simple pill pagination -->
+        <div class="ms-pagination">
+            <button type="button" class="ms-page active" data-ms-target="msPage1">1</button>
+            <button type="button" class="ms-page" data-ms-target="msPage2">2</button>
+            <button type="button" class="ms-page" data-ms-target="msPage3">3</button>
+            <a href="#" class="ms-next">Next <i class="bi bi-arrow-right"></i></a>
+        </div>
     </div>
 </section>
 
@@ -740,35 +1001,28 @@
                 });
         });
     $(document).ready(function() {
-        // Pagination Click Logic
-        $('.p-node').on('click', function() {
-            let target = $(this).data('target');
-            
-            if(target) {
-                // UI Update
-                $('.p-node').removeClass('active');
-                $(this).addClass('active');
 
-                // Content Switch
-                $('.story-group').hide();
-                $('#' + target).fadeIn(800);
+        // More Success Stories — functional pagination
+        $('.ms-page').on('click', function() {
+            let target = $(this).data('ms-target');
+            if (!target) return;
 
-                // Re-trigger Entrance Animations for the new cards
-                $('#' + target + ' .story-card').addClass('show');
+            $('.ms-page').removeClass('active');
+            $(this).addClass('active');
 
-                // Scroll to Top of Stories
-                $('html, body').animate({
-                    scrollTop: $(".story-container").offset().top - 80
-                }, 500);
-            }
+            $('.ms-page-group').hide();
+            $('#' + target).fadeIn(500);
         });
 
-        // Next Button Logic (Simple toggle)
-        $('.next-btn').on('click', function() {
-            let current = $('.p-node.active');
-            let next = current.next('.p-node');
-            if(next.length) next.trigger('click');
-            else $('.p-node').first().trigger('click');
+        $('.ms-next').on('click', function(e) {
+            e.preventDefault();
+            let current = $('.ms-page.active');
+            let next = current.next('.ms-page');
+            if (next.length) {
+                next.trigger('click');
+            } else {
+                $('.ms-page').first().trigger('click');
+            }
         });
 
         // Initial Observer for Page 1

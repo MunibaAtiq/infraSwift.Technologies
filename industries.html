@@ -199,20 +199,12 @@
         .mega-col h5::after { content: ''; display: block; width: 75px; height: 3px; margin-top: 10px; background: linear-gradient(90deg, #2599B6, #84B971); border-radius: 10px; }
         .mega-col a { display: block; color: #334155 !important; text-decoration: none; font-size: 15px; font-weight: 600; line-height: 1.6; padding: 8px 0; transition: .3s ease; }
         .mega-col a:hover { color: #2599B6 !important; padding-left: 10px; background: linear-gradient(90deg, rgba(37, 153, 182, .05), rgba(132, 185, 113, .05)); border-radius: 8px; padding-right: 10px; }
-        .mega-col { animation: fadeMega .5s ease; }
-
-        @keyframes fadeMega {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
 
         @media(max-width:991px) {
             .mega-menu { position: static; width: 100%; max-width: 100%; transform: none; opacity: 1; visibility: visible; display: none; grid-template-columns: 1fr; margin-top: 12px; padding: 20px; }
             .mega-parent.active .mega-menu { display: grid; }
             .mega-col { border-right: none; border-bottom: 1px solid rgba(37, 153, 182, .15); padding-right: 0; padding-bottom: 15px; }
             .mega-col:last-child { border-bottom: none; }
-            .mega-parent:hover .mega-menu { transform: none; }
-
             .nav-menu { display: none; flex-direction: column; align-items: flex-start; width: 100%; gap: 4px; padding: 14px 0; }
             .nav-menu.open { display: flex; }
             .nav-shell { flex-wrap: wrap; }
@@ -220,13 +212,7 @@
             .nav-cta { font-size: 0.75rem; padding: 0 16px; min-height: 40px; }
         }
 
-        /* --- INDUSTRIES PAGE SPECIFIC --- */
-        .industries-section {
-            padding: 20px 0 80px;
-            background-color: #fff;
-        }
-
-        /* Hero banner with background image */
+        /* --- HERO BANNER (ORIGINAL) --- */
         .industries-hero {
             position: relative;
             background-image: linear-gradient(90deg,
@@ -284,27 +270,31 @@
             .industries-header p { margin-left: auto; margin-right: auto; }
         }
 
-        @media (max-width: 575px) {
-            .industries-header h1 { font-size: 2rem; }
+        /* --- UPDATED IMAGE-BASED SECTION --- */
+        .industries-section {
+            padding: 60px 0 80px;
+            background-color: #fff;
         }
-
-        /* Industry Cards */
-        .ind-grid-wrap { margin-top: 40px; }
 
         .ind-card {
             position: relative;
             border-radius: 16px;
             overflow: hidden;
-            min-height: 210px;
+            height: 240px;
             display: flex;
-            align-items: flex-end;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+            margin-bottom: 24px;
         }
 
         .ind-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.18);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .ind-bg {
@@ -312,93 +302,64 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            transition: transform 0.7s ease;
             z-index: 0;
+            transition: transform 0.6s ease;
         }
 
         .ind-card:hover .ind-bg {
-            transform: scale(1.12);
+            transform: scale(1.1);
         }
 
-        .ind-card::before {
+        .ind-card::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(6, 13, 26, 0.1) 0%, rgba(6, 13, 26, 0.55) 55%, rgba(6, 13, 26, 0.92) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
             z-index: 1;
         }
 
-        .ind-icon-box {
-            position: absolute;
-            top: 18px;
-            left: 18px;
-            width: 46px;
-            height: 46px;
-            background: #fff;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .ind-content {
+            position: relative;
             z-index: 2;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #fff;
         }
 
-        .ind-card:hover .ind-icon-box {
-            transform: rotate(-6deg) scale(1.08);
-        }
-
-        .ind-icon-box i {
-            font-size: 1.3rem;
-            background: linear-gradient(135deg, var(--primary), var(--success));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .ind-icon-box {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: block;
+            color: #fff;
         }
 
         .ind-label {
-            position: relative;
-            z-index: 2;
-            padding: 20px;
-            color: #fff;
-            font-weight: 800;
-            font-size: 1.05rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.3;
         }
 
-        /* Bottom CTA Banner (shared style with Solutions page) */
+        /* Bottom CTA Banner (Image style) */
         .custom-solution-cta {
-            background: linear-gradient(135deg, #060d1a 0%, #0a1740 45%, #123166 100%);
-            border-radius: 24px;
+            background: linear-gradient(135deg, #06163a 0%, #0a255e 100%);
+            border-radius: 20px;
             padding: 60px;
             color: #fff;
             position: relative;
             overflow: hidden;
-            margin-top: 60px;
-            min-height: 300px;
+            margin-top: 40px;
+            min-height: 320px;
             display: flex;
             align-items: center;
         }
 
-        .custom-solution-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 45%;
-            height: 100%;
-            background: linear-gradient(90deg, #060d1a 0%, #060d1a 60%, transparent 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .cta-content { position: relative; z-index: 2; }
-        .cta-content h2 { font-size: 2rem; font-weight: 800; margin-bottom: 15px; }
-        .cta-content p { opacity: 0.8; max-width: 450px; margin-bottom: 30px; }
+        .cta-content { position: relative; z-index: 2; max-width: 550px; }
+        .cta-content h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 15px; }
+        .cta-content p { opacity: 0.9; font-size: 1.1rem; margin-bottom: 30px; }
 
         .btn-white-cta {
             background: #fff;
-            color: #060d1a;
-            padding: 12px 28px;
+            color: #06163a;
+            padding: 12px 30px;
             border-radius: 8px;
             font-weight: 800;
             text-decoration: none;
@@ -408,82 +369,48 @@
             transition: 0.3s;
         }
 
-        .btn-white-cta:hover { background: #f1f5f9; transform: translateY(-3px); }
+        .btn-white-cta:hover { background: #f1f5f9; transform: translateX(5px); color: #06163a; }
 
         .cta-3d-img {
             position: absolute;
-            top: 0;
             right: 0;
+            top: 0;
             height: 100%;
-            width: 58%;
+            width: 45%;
             object-fit: cover;
-            object-position: center;
-            -webkit-mask-image: linear-gradient(to left, black 55%, transparent 100%);
-            mask-image: linear-gradient(to left, black 55%, transparent 100%);
-            transform: scale(1.04);
-            transition: transform 1s ease;
-            animation: ctaZoom 8s ease-in-out infinite;
-            will-change: transform;
-        }
-
-        @keyframes ctaZoom {
-            0%, 100% { transform: scale(1.04); }
-            50% { transform: scale(1.1); }
-        }
-
-        .custom-solution-cta:hover .cta-3d-img {
-            animation-play-state: paused;
-            transform: scale(1.14);
+            z-index: 1;
+            mask-image: linear-gradient(to left, black 60%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
         }
 
         @media (max-width: 991px) {
-            .cta-3d-img { display: none; }
-            .custom-solution-cta::before { display: none; }
-            .custom-solution-cta { padding: 40px 30px; text-align: center; }
-            .cta-content p { margin-left: auto; margin-right: auto; }
+            .custom-solution-cta { padding: 40px; flex-direction: column; text-align: center; }
+            .cta-3d-img { position: relative; width: 100%; height: 250px; mask-image: none; -webkit-mask-image: none; margin-top: 30px; border-radius: 15px; }
+            .cta-content { max-width: 100%; }
+            .ind-card { height: 220px; }
         }
 
-        /* ===== FOOTER ===== */
-        footer.site-footer { background: var(--is-navy); color: #b9c4d8; }
-        .f-brand-logo { width: 42px; height: 42px; border-radius: 9px; overflow: hidden; }
-        .f-brand-logo img { width: 100%; height: 100%; object-fit: contain; }
-        footer .brand-name { font-size: 1rem; }
-        footer .f-title { color: #fff; font-weight: 700; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; margin-bottom: .9rem; }
-        footer a.f-link { color: #9fb0cf; font-size: .86rem; display: block; padding: .26rem 0; transition: color .2s; text-decoration: none; }
-        footer a.f-link:hover { color: #fff; }
-        .social-ic { width: 34px; height: 34px; border-radius: 8px; background: rgba(255, 255, 255, .08); display: grid; place-items: center; color: #cdd8ea; transition: all .25s; }
-        .social-ic:hover { background: var(--is-blue); color: #fff; }
+        /* --- FOOTER (ORIGINAL) --- */
+        .site-footer { background: #0a1228; color: #fff; }
+        .f-title { font-weight: 800; margin-bottom: 20px; color: #fff; }
+        .f-link { display: block; color: #9fb0cf; text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; transition: 0.3s; }
+        .f-link:hover { color: #fff; padding-left: 5px; }
+        .social-ic { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: 0.3s; }
+        .social-ic:hover { background: var(--primary); transform: translateY(-3px); }
 
-        /* ===== ANIMATIONS ===== */
-        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1); }
-        .reveal.in { opacity: 1; transform: none; }
+        #backToTop { position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; border-radius: 50%; background: var(--primary); color: #fff; border: none; display: none; align-items: center; justify-content: center; z-index: 100; transition: 0.3s; }
+        #backToTop.show { display: flex; }
 
-        /* ===== BACK TO TOP ===== */
-        #backToTop {
-            position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
-            width: 44px; height: 44px; border-radius: 50%;
-            background: var(--is-blue); color: #fff;
-            display: grid; place-items: center; font-size: 1.1rem;
-            box-shadow: 0 4px 16px rgba(24, 87, 214, .35);
-            opacity: 0; pointer-events: none;
-            transition: opacity .3s, transform .3s;
-            transform: translateY(10px);
-            border: none; cursor: pointer;
-        }
-
-        #backToTop.show { opacity: 1; pointer-events: all; transform: translateY(0); }
-        #backToTop:hover { background: var(--is-blue-dark); }
-
-        @media (prefers-reduced-motion: reduce) {
-            * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.in { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 
 <body>
 
-    <!-- ======== NAVBAR ======== -->
-   <nav class="site-nav" id="siteNav">
+    
+   <!-- ======== NAVBAR ======== -->
+<nav class="site-nav" id="siteNav">
         <div class="container nav-shell">
             <a class="brand-logo" href="index.html">
                 <img src="assets/Infraswift-01.png" alt="InfraSwift Technologies">
@@ -554,102 +481,102 @@
         </div>
     </nav>
 
-    <!-- Industries Hero -->
+    <!-- HERO BANNER (ORIGINAL) -->
     <section class="industries-hero">
         <div class="container">
             <div class="industries-header">
-                <div class="breadcrumb-nav">Home <i class="bi bi-chevron-right mx-1" style="font-size: 10px;"></i> Industries</div>
+                <div class="breadcrumb-nav"><a href="index.html">Home</a> <i class="bi bi-chevron-right mx-1" style="font-size: 10px;"></i> Industries</div>
                 <h1>Industries We Serve</h1>
                 <p>We deliver tailored IT solutions to meet the unique challenges of your industry.</p>
             </div>
         </div>
     </section>
 
+    <!-- UPDATED GRID SECTION (AS PER IMAGE) -->
     <main class="industries-section">
         <div class="container">
-
-            <!-- Industries Grid -->
-            <div class="ind-grid-wrap">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-
-                    <div class="col reveal">
-                        <div class="ind-card">
-                            <div class="ind-bg" style="background-image: url('assets/industry_Banking.png');"></div>
-                            <div class="ind-icon-box"><i class="bi bi-bank"></i></div>
-                            <div class="ind-label">Banking & Financial Services</div>
+            <div class="row g-4">
+                <!-- Banking -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="ind-card">
+                        <div class="ind-bg" style="background-image: url('assets/industry_Banking.png');"></div>
+                        <div class="ind-content">
+                            <i class="bi bi-bank ind-icon-box"></i>
+                            <h3 class="ind-label">Banking & Financial Services</h3>
                         </div>
                     </div>
-
-                    <div class="col reveal">
-                        <div class="ind-card">
-                            <div class="ind-bg" style="background-image: url('assets/industry_Healthcare.png');"></div>
-                            <div class="ind-icon-box"><i class="bi bi-heart-pulse"></i></div>
-                            <div class="ind-label">Healthcare</div>
+                </div>
+                <!-- Healthcare -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="ind-card">
+                        <div class="ind-bg" style="background-image: url('assets/industry_Healthcare.png');"></div>
+                        <div class="ind-content">
+                            <i class="bi bi-heart-pulse ind-icon-box"></i>
+                            <h3 class="ind-label">Healthcare</h3>
                         </div>
                     </div>
-
-                    <div class="col reveal">
-                        <div class="ind-card">
-                            <div class="ind-bg" style="background-image: url('assets/industry_Government.png');"></div>
-                            <div class="ind-icon-box"><i class="bi bi-bank2"></i></div>
-                            <div class="ind-label">Government</div>
+                </div>
+                <!-- Government -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="ind-card">
+                        <div class="ind-bg" style="background-image: url('assets/industry_Government.png');"></div>
+                        <div class="ind-content">
+                            <i class="bi bi-bank2 ind-icon-box"></i>
+                            <h3 class="ind-label">Government</h3>
                         </div>
                     </div>
-
-                    <div class="col reveal">
-                        <div class="ind-card">
-                            <div class="ind-bg" style="background-image: url('assets/industry_Manufacturing.png');"></div>
-                            <div class="ind-icon-box"><i class="bi bi-gear-wide-connected"></i></div>
-                            <div class="ind-label">Manufacturing</div>
+                </div>
+                <!-- Manufacturing -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="ind-card">
+                        <div class="ind-bg" style="background-image: url('assets/industry_Manufacturing.png');"></div>
+                        <div class="ind-content">
+                            <i class="bi bi-gear-wide-connected ind-icon-box"></i>
+                            <h3 class="ind-label">Manufacturing</h3>
                         </div>
                     </div>
-
-                    <div class="col reveal">
-                        <div class="ind-card">
-                            <div class="ind-bg" style="background-image: url('assets/industry_Education.png');"></div>
-                            <div class="ind-icon-box"><i class="bi bi-mortarboard"></i></div>
-                            <div class="ind-label">Education</div>
+                </div>
+                <!-- Education -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="ind-card">
+                        <div class="ind-bg" style="background-image: url('assets/industry_Education.png');"></div>
+                        <div class="ind-content">
+                            <i class="bi bi-mortarboard ind-icon-box"></i>
+                            <h3 class="ind-label">Education</h3>
                         </div>
                     </div>
-
-                    <div class="col reveal">
-                        <div class="ind-card">
-                            <div class="ind-bg" style="background-image: url('assets/industry_Retail.png');"></div>
-                            <div class="ind-icon-box"><i class="bi bi-shop"></i></div>
-                            <div class="ind-label">Retail</div>
+                </div>
+                <!-- Retail -->
+                <div class="col-lg-4 col-md-6 reveal">
+                    <div class="ind-card">
+                        <div class="ind-bg" style="background-image: url('assets/industry_Retail.png');"></div>
+                        <div class="ind-content">
+                            <i class="bi bi-shop ind-icon-box"></i>
+                            <h3 class="ind-label">Retail</h3>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- Bottom CTA Banner -->
+            <!-- UPDATED CTA BANNER (AS PER IMAGE) -->
             <div class="custom-solution-cta reveal">
                 <div class="cta-content">
                     <h2>Don't see your industry?</h2>
                     <p>We have solutions for every business. Let's discuss your needs.</p>
-                    <a href="#" class="btn-white-cta">Contact Us <i class="bi bi-arrow-right"></i></a>
+                    <a href="contact.html" class="btn-white-cta">Contact Us <i class="bi bi-arrow-right"></i></a>
                 </div>
-                <img src="assets/industry_Contact.png" class="cta-3d-img" alt="Team discussing solutions">
+                <img src="assets/industry_Contact.png" class="cta-3d-img" alt="Team Support">
             </div>
-
         </div>
     </main>
 
-    <!-- Back To Top -->
-    <button id="backToTop" title="Back to top"><i class="bi bi-arrow-up"></i></button>
-
-    <!-- ======== FOOTER ======== -->
+    <!-- FOOTER (ORIGINAL) -->
     <footer class="site-footer pt-5 pb-4">
         <div class="container">
             <div class="row g-4">
-
-                <!-- Brand col -->
                 <div class="col-lg-4 col-md-6">
                     <img src="assets/logo.png" alt="InfraSwift Technologies" height="74px">
-
-                    <p style="font-size:.88rem;max-width:22rem;line-height:1.65;color:#9fb0cf;">Empowering businesses
-                        with innovative IT solutions to secure, scale and accelerate their digital future.</p>
+                    <p style="font-size:.88rem;max-width:22rem;line-height:1.65;color:#9fb0cf;">Empowering businesses with innovative IT solutions to secure, scale and accelerate their digital future.</p>
                     <div class="d-flex gap-2 mt-3">
                         <a href="#" class="social-ic"><i class="bi bi-linkedin"></i></a>
                         <a href="#" class="social-ic"><i class="bi bi-facebook"></i></a>
@@ -657,8 +584,6 @@
                         <a href="#" class="social-ic"><i class="bi bi-youtube"></i></a>
                     </div>
                 </div>
-
-                <!-- Solutions -->
                 <div class="col-6 col-lg-2 col-md-3">
                     <div class="f-title">Solutions</div>
                     <a class="f-link" href="#">Cloud Solutions</a>
@@ -666,10 +591,7 @@
                     <a class="f-link" href="#">Cybersecurity</a>
                     <a class="f-link" href="#">Networking Solutions</a>
                     <a class="f-link" href="#">Managed Services</a>
-                    <a class="f-link" href="#">IT Consulting</a>
                 </div>
-
-                <!-- Industries -->
                 <div class="col-6 col-lg-2 col-md-3">
                     <div class="f-title">Industries</div>
                     <a class="f-link" href="#">Banking & Financial Services</a>
@@ -679,18 +601,13 @@
                     <a class="f-link" href="#">Education</a>
                     <a class="f-link" href="#">Retail</a>
                 </div>
-
-                <!-- Resources -->
                 <div class="col-6 col-lg-2 col-md-3">
                     <div class="f-title">Resources</div>
                     <a class="f-link" href="#">Blog</a>
                     <a class="f-link" href="#">Case Studies</a>
                     <a class="f-link" href="#">Whitepapers</a>
                     <a class="f-link" href="#">Webinars</a>
-                    <a class="f-link" href="#">Events</a>
                 </div>
-
-                <!-- Company + Contact -->
                 <div class="col-6 col-lg-2 col-md-3">
                     <div class="f-title">Company</div>
                     <a class="f-link" href="#">About Us</a>
@@ -699,25 +616,17 @@
                     <a class="f-link" href="#">Partners</a>
                     <a class="f-link" href="#">Contact Us</a>
                 </div>
-
             </div>
-
-            <!-- Contact strip -->
             <div class="row mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,.08);">
                 <div class="col-12">
                     <div class="f-title mb-2">Contact Us</div>
                     <div class="d-flex flex-wrap gap-3 gap-md-4">
-                        <a class="f-link d-inline-flex align-items-center gap-2" href="tel:+922137131111"><i
-                                class="bi bi-telephone-fill"></i>+92 21 3713 1111</a>
-                        <a class="f-link d-inline-flex align-items-center gap-2" href="mailto:info@infraswift.com"><i
-                                class="bi bi-envelope-fill"></i>info@infraswift.com</a>
-                        <a class="f-link d-inline-flex align-items-center gap-2" href="#"><i
-                                class="bi bi-geo-alt-fill"></i>Suite 501, Business Avenue, Block 6, PECHS, Karachi,
-                            Pakistan</a>
+                        <a class="f-link d-inline-flex align-items-center gap-2" href="tel:+922137131111"><i class="bi bi-telephone-fill"></i>+92 21 3713 1111</a>
+                        <a class="f-link d-inline-flex align-items-center gap-2" href="mailto:info@infraswift.com"><i class="bi bi-envelope-fill"></i>info@infraswift.com</a>
+                        <a class="f-link d-inline-flex align-items-center gap-2" href="#"><i class="bi bi-geo-alt-fill"></i>Suite 501, Business Avenue, Karachi</a>
                     </div>
                 </div>
             </div>
-
             <hr style="border-color:rgba(255,255,255,.09);margin:1.5rem 0 1rem;">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
                 <small style="color:#9fb0cf;">© 2024 InfraSwift Technologies (Pvt.) Ltd. All Rights Reserved.</small>
@@ -729,24 +638,21 @@
         </div>
     </footer>
 
+    <button id="backToTop"><i class="bi bi-arrow-up"></i></button>
+
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
         $(function() {
-            // Navbar shadow
             $(window).on('scroll', function() {
                 var s = $(this).scrollTop();
-                $('.navbar').toggleClass('scrolled', s > 30);
                 $('#backToTop').toggleClass('show', s > 400);
             });
 
-            // Mobile nav menu toggle
             $('#navToggle').on('click', function() {
                 $('#navMenu').toggleClass('open');
-                $(this).attr('aria-expanded', $('#navMenu').hasClass('open'));
             });
 
-            // Mega menu tap-to-open on mobile/tablet
             $('.mega-parent > a').on('click', function(e) {
                 if ($(window).width() <= 991) {
                     e.preventDefault();
@@ -754,7 +660,6 @@
                 }
             });
 
-            // Reveal on scroll
             const io = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
                     if (e.isIntersecting) {
@@ -765,19 +670,10 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-            // Back to top
             $('#backToTop').on('click', function() {
                 $('html,body').animate({ scrollTop: 0 }, 500);
             });
-
-            // Mobile menu close on link click
-            $('#mainNav .nav-link:not(.dropdown-toggle), #mainNav .dropdown-item, .btn-expert').on('click',
-                function() {
-                    var c = document.querySelector('#mainNav');
-                    if (c && c.classList.contains('show')) new bootstrap.Collapse(c).hide();
-                });
         });
     </script>
 </body>
-
 </html>
